@@ -232,6 +232,19 @@ a { color: inherit; text-decoration: none; }
 .footer-col a:hover { color: var(--amber); }
 .footer-copy { margin: 0; font-size: 0.82rem; color: rgba(255,255,255,0.5); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 22px; text-align: center; }
 
+/* ===== Mejoras de estilo (inspirado en Fracorp, con nuestra paleta) ===== */
+/* Subrayado de acento bajo los titulos de seccion */
+.section-head h2::after, .about-grid h2::after { content: ""; display: block; width: 66px; height: 4px; border-radius: 3px; background: var(--amber); margin-top: 18px; }
+.section-head.center h2::after { margin-left: auto; margin-right: auto; }
+
+/* Corte diagonal en la seccion oscura de Proyectos */
+#proyectos { clip-path: polygon(0 2.4vw, 100% 0, 100% 100%, 0 100%); padding-top: calc(92px + 2.4vw); }
+
+/* Boton flotante de WhatsApp */
+.wa-float { position: fixed; right: 20px; bottom: 20px; z-index: 90; width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: grid; place-items: center; box-shadow: 0 10px 26px rgba(8,21,36,0.28); transition: transform 0.15s ease, box-shadow 0.15s ease; }
+.wa-float:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 14px 30px rgba(8,21,36,0.34); }
+.wa-float svg { width: 30px; height: 30px; fill: #fff; }
+
 /* ===== Responsive ===== */
 @media (max-width: 980px) {
   .services-grid { grid-template-columns: 1fr 1fr; }
@@ -371,7 +384,7 @@ a { color: inherit; text-decoration: none; }
       <div class="about-grid">
         <div>
           <p class="section-eyebrow">Quiénes somos</p>
-          <h2>Construimos con visión y precisión.</h2>
+          <h2>Construimos con visión y <span class="text-orange">precisión.</span></h2>
           <p class="section-sub">
             En JMC combinamos criterio técnico, planificación y ejecución responsable para
             llevar cada proyecto desde la idea inicial hasta su entrega. Trabajamos para
@@ -403,7 +416,7 @@ a { color: inherit; text-decoration: none; }
     <div class="container">
       <div class="section-head">
         <p class="section-eyebrow">Qué hacemos</p>
-        <h2>Soluciones integrales para cada etapa.</h2>
+        <h2>Soluciones integrales para <span class="text-orange">cada etapa.</span></h2>
         <p class="section-sub">Un servicio técnico y organizado, pensado para clientes que valoran claridad, control y calidad constructiva.</p>
       </div>
       <div class="services-grid">
@@ -446,7 +459,7 @@ a { color: inherit; text-decoration: none; }
     <div class="container">
       <div class="section-head">
         <p class="section-eyebrow">Proyectos destacados</p>
-        <h2>De lo planeado a lo construido.</h2>
+        <h2>De lo planeado a lo <span class="text-orange">construido.</span></h2>
         <p class="section-sub">Obras ejecutadas para clientes públicos y privados en la República Dominicana.</p>
       </div>
 
@@ -501,7 +514,7 @@ a { color: inherit; text-decoration: none; }
     <div class="container">
       <div class="section-head center">
         <p class="section-eyebrow">Nuestro equipo</p>
-        <h2>Profesionales detrás de cada obra.</h2>
+        <h2>Profesionales detrás de <span class="text-orange">cada obra.</span></h2>
         <p class="section-sub">Ingeniería, diseño y planificación con experiencia comprobada. <em>(Fotos y nombres del equipo por confirmar.)</em></p>
       </div>
       <div class="team-grid">
@@ -550,7 +563,7 @@ a { color: inherit; text-decoration: none; }
     <div class="container">
       <div class="section-head">
         <p class="section-eyebrow">Contáctanos</p>
-        <h2>Hablemos de tu próximo proyecto.</h2>
+        <h2>Hablemos de tu próximo <span class="text-orange">proyecto.</span></h2>
         <p class="section-sub">Estamos listos para ayudarte con diseño, construcción o gestión de obra.</p>
       </div>
 
@@ -630,6 +643,11 @@ a { color: inherit; text-decoration: none; }
       <p class="footer-copy">© <span id="year"></span> JMC Constructora — Ingenieros y Asociados. Todos los derechos reservados.</p>
     </div>
   </footer>
+
+  <!-- WhatsApp flotante -->
+  <a class="wa-float" href="https://wa.me/18090000000" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp" title="Escríbenos por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.29-.15-1.7-.84-1.96-.94-.26-.1-.45-.15-.64.15-.19.29-.74.94-.9 1.13-.17.19-.33.22-.62.07-.29-.15-1.22-.45-2.33-1.44-.86-.77-1.44-1.72-1.61-2-.17-.29-.02-.45.13-.6.13-.13.29-.33.44-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.55-.88-2.12-.23-.56-.47-.48-.64-.49l-.55-.01c-.19 0-.5.07-.76.36-.26.29-1 .98-.99 2.41 0 1.43 1.04 2.82 1.18 3.01.15.19 2.03 3.1 4.92 4.35.69.3 1.22.48 1.64.61.69.22 1.31.19 1.81.12.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34zM12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
+  </a>
 
   <script>
     const toggle = document.getElementById("navToggle");
