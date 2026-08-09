@@ -4,20 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Constructora JMC Ingenieros y Asociados | Ingeniería y Construcción en República Dominicana</title>
-  <meta name="description" content="Constructora JMC Ingenieros y Asociados: obra civil, remodelación, pintura, impermeabilización y mantenimiento para el sector público y privado en la República Dominicana. RNC 101704977." />
+  <meta name="description" content="Constructora JMC Ingenieros y Asociados: diseño y obra civil, remodelaciones, pintura, impermeabilización y mantenimiento para el sector público y privado en la República Dominicana. RNC 101704977." />
   <meta name="theme-color" content="#0f2f56" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Constructora JMC Ingenieros y Asociados" />
-  <meta property="og:description" content="Ingeniería y construcción para el sector público y privado en la República Dominicana." />
+  <meta property="og:description" content="Aliados en cada obra, constructores de confianza. Ingeniería y construcción para el sector público y privado en la República Dominicana." />
+  <meta property="og:url" content="https://www.jmcconstruye.com" />
   <meta property="og:locale" content="es_DO" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-/* ===== Design tokens ===== */
+/* ============================================================
+   PALETA PROVISIONAL — se ajustará al recibir el moodboard.
+   Estructura/segmentación basada en la arquitectura de Fracorp.
+   ============================================================ */
 :root {
   --navy: #0f2f56;
   --navy-700: #16406f;
@@ -34,15 +38,13 @@
   --radius-sm: 10px;
   --shadow: 0 10px 30px rgba(15, 47, 86, 0.08);
   --shadow-sm: 0 4px 14px rgba(15, 47, 86, 0.07);
-  --container: 1140px;
+  --container: 1160px;
   --font-head: "Barlow Condensed", "Inter", sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
-
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -51,9 +53,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
-
 img { max-width: 100%; display: block; }
-
 a { color: inherit; text-decoration: none; }
 
 .container {
@@ -67,37 +67,55 @@ a { color: inherit; text-decoration: none; }
 .btn {
   display: inline-block;
   padding: 13px 26px;
-  border-radius: 999px;
+  border-radius: 6px;
   font-weight: 600;
-  font-size: 0.98rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
   cursor: pointer;
   border: 2px solid transparent;
 }
-.btn-primary {
-  background: var(--amber);
-  color: var(--navy-900);
-}
-.btn-primary:hover {
-  background: var(--amber-600);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 22px rgba(246, 168, 33, 0.35);
-}
-.btn-ghost {
-  border-color: rgba(255, 255, 255, 0.5);
-  color: var(--white);
-}
-.btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.12);
-  transform: translateY(-2px);
-}
+.btn-primary { background: var(--amber); color: var(--navy-900); }
+.btn-primary:hover { background: var(--amber-600); transform: translateY(-2px); box-shadow: 0 10px 22px rgba(246,168,33,0.35); }
+.btn-ghost { border-color: rgba(255,255,255,0.5); color: var(--white); }
+.btn-ghost:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+.btn-dark { background: var(--navy); color: var(--white); }
+.btn-dark:hover { background: var(--navy-700); transform: translateY(-2px); }
 
-/* ===== Header ===== */
+/* ===== (1) Top bar ===== */
+.topbar {
+  background: var(--navy-900);
+  color: rgba(255,255,255,0.82);
+  font-size: 0.85rem;
+}
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 42px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.topbar-contact { display: flex; gap: 22px; flex-wrap: wrap; }
+.topbar-contact a { display: inline-flex; align-items: center; gap: 7px; }
+.topbar-contact a:hover { color: var(--amber); }
+.topbar-social { display: flex; gap: 10px; }
+.topbar-social a {
+  width: 26px; height: 26px;
+  display: grid; place-items: center;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+.topbar-social a:hover { background: var(--amber); color: var(--navy-900); border-color: var(--amber); }
+
+/* ===== (2) Header / Nav ===== */
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 50;
-  background: rgba(255, 255, 255, 0.92);
+  z-index: 60;
+  background: rgba(255,255,255,0.95);
   backdrop-filter: saturate(140%) blur(10px);
   border-bottom: 1px solid var(--line);
 }
@@ -105,64 +123,83 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 74px;
+  height: 76px;
 }
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+.brand { display: flex; align-items: center; gap: 12px; }
 .brand-mark {
-  display: grid;
-  place-items: center;
-  width: 46px;
-  height: 46px;
-  border-radius: 12px;
+  display: grid; place-items: center;
+  width: 48px; height: 48px;
+  border-radius: 10px;
   background: var(--navy);
   color: var(--amber);
   font-family: var(--font-head);
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   letter-spacing: 0.5px;
 }
 .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
-.brand-text strong { font-size: 1.05rem; color: var(--navy); }
+.brand-text strong { font-size: 1.06rem; color: var(--navy); }
 .brand-text small { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.3px; }
 
-.nav { display: flex; align-items: center; gap: 30px; }
-.nav a { font-weight: 500; color: var(--ink); font-size: 0.96rem; }
-.nav a:hover { color: var(--navy); }
-.nav .nav-cta {
-  background: var(--navy);
-  color: var(--white);
-  padding: 10px 20px;
-  border-radius: 999px;
+.nav { display: flex; align-items: center; gap: 26px; }
+.nav > a, .dropdown > button {
+  font-family: inherit;
+  font-weight: 500;
+  color: var(--ink);
+  font-size: 0.95rem;
+  background: none; border: 0; cursor: pointer;
+  padding: 6px 0;
+  display: inline-flex; align-items: center; gap: 5px;
 }
-.nav .nav-cta:hover { background: var(--navy-700); color: var(--white); }
+.nav > a:hover, .dropdown > button:hover { color: var(--navy); }
+.nav .nav-cta { color: var(--navy-900); }
+
+/* Dropdown Servicios */
+.dropdown { position: relative; }
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  min-width: 250px;
+  padding: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s ease;
+}
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+  opacity: 1; visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+.dropdown-menu a {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+.dropdown-menu a:hover { background: var(--bg-alt); color: var(--navy); }
 
 .nav-toggle {
   display: none;
   flex-direction: column;
   gap: 5px;
-  background: none;
-  border: 0;
-  cursor: pointer;
+  background: none; border: 0; cursor: pointer;
   padding: 8px;
 }
-.nav-toggle span {
-  width: 26px;
-  height: 3px;
-  background: var(--navy);
-  border-radius: 2px;
-  transition: 0.25s;
-}
+.nav-toggle span { width: 26px; height: 3px; background: var(--navy); border-radius: 2px; transition: 0.25s; }
 
-/* ===== Hero ===== */
+/* ===== (3) Hero ===== */
 .hero {
   position: relative;
   color: var(--white);
   background:
-    linear-gradient(135deg, rgba(10, 32, 56, 0.94), rgba(15, 47, 86, 0.86)),
+    linear-gradient(135deg, rgba(10,32,56,0.94), rgba(15,47,86,0.82)),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M0 59h60M59 0v60' stroke='%23ffffff' stroke-opacity='0.05' stroke-width='1'/%3E%3C/svg%3E"),
     var(--navy);
   overflow: hidden;
@@ -170,273 +207,244 @@ a { color: inherit; text-decoration: none; }
 .hero::after {
   content: "";
   position: absolute;
-  right: -120px;
-  top: -120px;
-  width: 420px;
-  height: 420px;
-  background: radial-gradient(circle, rgba(246, 168, 33, 0.28), transparent 70%);
+  right: -120px; top: -120px;
+  width: 460px; height: 460px;
+  background: radial-gradient(circle, rgba(246,168,33,0.26), transparent 70%);
   pointer-events: none;
 }
-.hero-inner {
-  padding: 96px 24px 88px;
-  position: relative;
-  z-index: 1;
-  max-width: 900px;
-}
+.hero-inner { padding: 104px 24px 92px; position: relative; z-index: 1; max-width: 940px; }
 .eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--amber);
-  margin: 0 0 14px;
+  text-transform: uppercase; letter-spacing: 3px;
+  font-size: 0.78rem; font-weight: 600; color: var(--amber);
+  margin: 0 0 16px;
 }
 .hero h1 {
   font-family: var(--font-head);
   font-weight: 700;
-  font-size: clamp(2.4rem, 5.5vw, 4rem);
-  line-height: 1.04;
+  font-size: clamp(2.5rem, 6vw, 4.4rem);
+  line-height: 1.02;
   margin: 0 0 20px;
   letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 .hero h1 span { color: var(--amber); }
-.hero-lead {
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
-  color: rgba(255, 255, 255, 0.86);
-  max-width: 620px;
-  margin: 0 0 32px;
-}
-.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 54px; }
-
+.hero-lead { font-size: clamp(1.05rem, 2vw, 1.25rem); color: rgba(255,255,255,0.86); max-width: 640px; margin: 0 0 34px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 56px; }
 .hero-stats {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  margin: 0;
-  padding: 26px 0 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  list-style: none; display: flex; flex-wrap: wrap; gap: 44px;
+  margin: 0; padding: 28px 0 0; border-top: 1px solid rgba(255,255,255,0.15);
 }
 .hero-stats li { display: flex; flex-direction: column; }
-.hero-stats strong {
-  font-family: var(--font-head);
-  font-size: 1.7rem;
-  color: var(--white);
-}
-.hero-stats span { font-size: 0.85rem; color: rgba(255, 255, 255, 0.7); }
+.hero-stats strong { font-family: var(--font-head); font-size: 1.8rem; color: var(--white); }
+.hero-stats span { font-size: 0.85rem; color: rgba(255,255,255,0.7); }
 
-/* ===== Sections ===== */
-.section { padding: 84px 0; }
+/* ===== Sections base ===== */
+.section { padding: 88px 0; }
 .section-alt { background: var(--bg-alt); }
 .section-dark { background: var(--navy); color: var(--white); }
-
-.section-head { max-width: 640px; margin: 0 auto 52px; text-align: center; }
+.section-head { max-width: 660px; margin: 0 auto 54px; text-align: center; }
 .section-eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 0.76rem;
-  font-weight: 700;
-  color: var(--amber-600);
-  margin: 0 0 10px;
+  text-transform: uppercase; letter-spacing: 2px;
+  font-size: 0.76rem; font-weight: 700; color: var(--amber-600); margin: 0 0 10px;
 }
 .section h2 {
-  font-family: var(--font-head);
-  font-weight: 700;
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-  line-height: 1.1;
-  margin: 0 0 14px;
-  color: var(--navy);
+  font-family: var(--font-head); font-weight: 700;
+  font-size: clamp(1.9rem, 3.6vw, 2.7rem); line-height: 1.08;
+  margin: 0 0 14px; color: var(--navy); text-transform: uppercase; letter-spacing: 0.5px;
 }
 .section-dark h2, .section-dark h3 { color: var(--white); }
 .section-sub { color: var(--muted); margin: 0; font-size: 1.05rem; }
 
-.grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  align-items: start;
-}
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
 
-/* Nosotros */
-#nosotros h2 { text-align: left; }
-.value-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
-.value-list li {
+/* ===== (4) Lo que hacemos — Servicios ===== */
+.services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.service-card {
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 22px 24px;
-  box-shadow: var(--shadow-sm);
-  border-left: 4px solid var(--amber);
-}
-.value-list h3 { margin: 0 0 6px; color: var(--navy); font-size: 1.1rem; }
-.value-list p { margin: 0; color: var(--muted); font-size: 0.96rem; }
-
-/* Cards */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-.card {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 30px 26px;
+  overflow: hidden;
   box-shadow: var(--shadow-sm);
   transition: transform 0.18s ease, box-shadow 0.18s ease;
+  display: flex; flex-direction: column;
 }
-.card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-.card-icon {
-  width: 56px; height: 56px;
+.service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+/* Marcador de imagen: se reemplaza por foto real del moodboard */
+.service-img {
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, var(--navy), var(--navy-700));
   display: grid; place-items: center;
-  font-size: 1.7rem;
-  background: var(--bg-alt);
-  border-radius: 14px;
-  margin-bottom: 16px;
-}
-.card h3 { margin: 0 0 8px; color: var(--navy); font-size: 1.2rem; }
-.card p { margin: 0; color: var(--muted); font-size: 0.97rem; }
-
-/* Projects */
-.projects {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-.project {
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 26px;
-  background: var(--white);
+  color: rgba(255,255,255,0.9);
+  font-size: 2.2rem;
   position: relative;
+}
+.service-img::after {
+  content: "Imagen";
+  position: absolute; bottom: 8px; right: 10px;
+  font-size: 0.62rem; letter-spacing: 1px; text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+.service-body { padding: 22px 22px 26px; }
+.service-body h3 { margin: 0 0 8px; color: var(--navy); font-size: 1.12rem; }
+.service-body p { margin: 0; color: var(--muted); font-size: 0.94rem; }
+
+/* ===== (5) Proyectos por categoría ===== */
+.project-cats { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 40px; }
+.project-cat {
+  position: relative;
+  border-radius: var(--radius);
   overflow: hidden;
+  min-height: 300px;
+  display: flex; align-items: flex-end;
+  color: var(--white);
+  background: linear-gradient(180deg, rgba(10,32,56,0.25), rgba(10,32,56,0.9)), linear-gradient(135deg, var(--navy-700), var(--navy-900));
 }
-.project::before {
-  content: "";
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 5px;
-  background: var(--navy);
-}
-.project h3 { margin: 0 0 4px; color: var(--navy); font-size: 1.15rem; }
-.project-loc {
-  margin: 0 0 12px;
-  font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--amber-600);
-  font-weight: 600;
-}
-.project p:last-child { margin: 0; color: var(--muted); font-size: 0.95rem; }
+.project-cat-body { padding: 30px 32px; position: relative; z-index: 1; }
+.project-cat h3 { font-family: var(--font-head); font-size: 1.9rem; margin: 0 0 8px; text-transform: uppercase; }
+.project-cat p { margin: 0 0 14px; color: rgba(255,255,255,0.85); font-size: 0.97rem; max-width: 90%; }
+.project-cat .tag { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--amber); font-weight: 700; }
 
-/* Sectores */
-.sector {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: var(--radius);
-  padding: 34px 32px;
+.projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.project {
+  border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 24px; background: var(--white); position: relative; overflow: hidden;
 }
-.sector h3 { margin: 0 0 12px; font-size: 1.4rem; font-family: var(--font-head); color: var(--amber); }
-.sector p { margin: 0; color: rgba(255, 255, 255, 0.82); }
+.project::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--amber); }
+.project h4 { margin: 0 0 4px; color: var(--navy); font-size: 1.08rem; }
+.project-loc { margin: 0 0 10px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--amber-600); font-weight: 600; }
+.project p:last-child { margin: 0; color: var(--muted); font-size: 0.92rem; }
 
-/* Contacto */
-.contact-list { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 18px; }
-.contact-list li { display: flex; flex-direction: column; color: var(--ink); }
-.contact-label {
-  font-size: 0.74rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--muted);
-  font-weight: 700;
-  margin-bottom: 2px;
+/* ===== Nosotros / Acerca de ===== */
+#nosotros h2, #acerca h2 { text-align: left; }
+.value-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+.value-list li {
+  background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 20px 22px; box-shadow: var(--shadow-sm); border-left: 4px solid var(--amber);
 }
-.contact-list a { color: var(--navy); font-weight: 600; }
-.contact-list em { color: var(--amber-600); font-style: italic; font-size: 0.85rem; }
+.value-list h3 { margin: 0 0 6px; color: var(--navy); font-size: 1.06rem; }
+.value-list p { margin: 0; color: var(--muted); font-size: 0.94rem; }
 
-.contact-form {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 30px;
-  box-shadow: var(--shadow);
-  display: grid;
-  gap: 16px;
-}
-.contact-form label { display: grid; gap: 6px; font-weight: 600; font-size: 0.9rem; color: var(--ink); }
-.contact-form input,
-.contact-form textarea {
-  font-family: inherit;
-  font-size: 0.98rem;
-  padding: 12px 14px;
+/* Stats band */
+.stats-band { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+.stat b { display: block; font-family: var(--font-head); font-size: 2.4rem; color: var(--amber); line-height: 1; }
+.stat span { color: rgba(255,255,255,0.8); font-size: 0.9rem; }
+
+/* ===== (6) Clientes ===== */
+.clients { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.client-logo {
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
-  background: var(--bg-alt);
+  background: var(--white);
+  min-height: 92px;
+  display: grid; place-items: center;
+  text-align: center;
+  padding: 14px;
+  color: var(--navy);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.client-logo:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+
+/* ===== (7) Contacto ===== */
+.contact-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: start; }
+.contact-block { margin-bottom: 26px; }
+.contact-block h3 { margin: 0 0 10px; color: var(--navy); font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--font-head); }
+.contact-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.contact-list li { display: flex; flex-direction: column; }
+.contact-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); font-weight: 700; margin-bottom: 2px; }
+.contact-list a { color: var(--navy); font-weight: 600; }
+.contact-list em { color: var(--amber-600); font-style: italic; font-size: 0.82rem; }
+.hours { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.hours li { display: flex; justify-content: space-between; border-bottom: 1px dashed var(--line); padding: 5px 0; font-size: 0.92rem; color: var(--ink); }
+.hours span:last-child { color: var(--muted); }
+
+.contact-form {
+  background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 30px; box-shadow: var(--shadow); display: grid; gap: 16px;
+}
+.contact-form label { display: grid; gap: 6px; font-weight: 600; font-size: 0.88rem; color: var(--ink); }
+.contact-form input, .contact-form textarea {
+  font-family: inherit; font-size: 0.96rem; padding: 12px 14px;
+  border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--bg-alt);
   transition: border 0.15s ease, background 0.15s ease;
 }
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: var(--navy);
-  background: var(--white);
-}
+.contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--navy); background: var(--white); }
 .contact-form .btn { width: 100%; border: 0; }
 .form-note { margin: 0; font-size: 0.8rem; color: var(--muted); text-align: center; }
 
+/* CTA Cotizar band */
+.cta-band { background: var(--amber); color: var(--navy-900); }
+.cta-band .container { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 40px; padding-bottom: 40px; flex-wrap: wrap; }
+.cta-band h2 { color: var(--navy-900); margin: 0; text-align: left; }
+.cta-band p { margin: 4px 0 0; color: var(--navy-700); }
+
 /* ===== Footer ===== */
-.site-footer {
-  background: var(--navy-900);
-  color: rgba(255, 255, 255, 0.75);
-  padding: 48px 0 30px;
-}
-.footer-inner {
-  display: grid;
-  gap: 26px;
-}
-.footer-brand { display: flex; align-items: center; gap: 14px; }
+.site-footer { background: var(--navy-900); color: rgba(255,255,255,0.75); padding: 54px 0 30px; }
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; margin-bottom: 30px; }
+.footer-brand { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
 .footer-brand strong { display: block; color: var(--white); }
-.footer-brand small { color: rgba(255, 255, 255, 0.6); }
-.footer-nav { display: flex; flex-wrap: wrap; gap: 24px; }
-.footer-nav a { color: rgba(255, 255, 255, 0.75); font-size: 0.95rem; }
-.footer-nav a:hover { color: var(--amber); }
-.footer-copy { margin: 0; font-size: 0.85rem; color: rgba(255, 255, 255, 0.5); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 22px; }
+.footer-brand small { color: rgba(255,255,255,0.6); }
+.footer-col h4 { color: var(--white); font-size: 0.95rem; margin: 0 0 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+.footer-col a, .footer-col p { display: block; color: rgba(255,255,255,0.72); font-size: 0.92rem; margin: 0 0 9px; }
+.footer-col a:hover { color: var(--amber); }
+.footer-copy { margin: 0; font-size: 0.82rem; color: rgba(255,255,255,0.5); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 22px; text-align: center; }
 
 /* ===== Responsive ===== */
+@media (max-width: 980px) {
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .clients { grid-template-columns: repeat(3, 1fr); }
+  .stats-band { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
 @media (max-width: 860px) {
   .nav {
-    position: fixed;
-    inset: 74px 0 auto 0;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    background: var(--white);
-    border-bottom: 1px solid var(--line);
-    padding: 12px 24px 20px;
-    transform: translateY(-140%);
-    transition: transform 0.28s ease;
-    box-shadow: var(--shadow);
+    position: fixed; inset: 118px 0 auto 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--white); border-bottom: 1px solid var(--line);
+    padding: 12px 24px 20px; transform: translateY(-160%);
+    transition: transform 0.28s ease; box-shadow: var(--shadow);
   }
   .nav.open { transform: translateY(0); }
-  .nav a { padding: 14px 4px; border-bottom: 1px solid var(--line); }
-  .nav .nav-cta { text-align: center; margin-top: 12px; border: 0; }
+  .nav > a, .dropdown > button { padding: 14px 4px; border-bottom: 1px solid var(--line); width: 100%; justify-content: space-between; }
+  .dropdown-menu { position: static; transform: none; opacity: 1; visibility: visible; box-shadow: none; border: 0; min-width: 0; padding: 0 0 10px 12px; }
+  .dropdown:not(.open) .dropdown-menu { display: none; }
   .nav-toggle { display: flex; }
-
-  .grid-2 { grid-template-columns: 1fr; gap: 34px; }
-  .cards { grid-template-columns: 1fr 1fr; }
-  .projects { grid-template-columns: 1fr 1fr; }
+  .grid-2, .contact-grid, .project-cats, .cta-band .container { grid-template-columns: 1fr; }
+  .contact-grid { display: grid; }
 }
-
-@media (max-width: 560px) {
-  .section { padding: 60px 0; }
-  .hero-inner { padding: 70px 24px 60px; }
-  .hero-stats { gap: 26px; }
-  .cards, .projects { grid-template-columns: 1fr; }
+@media (max-width: 620px) {
+  .section { padding: 62px 0; }
+  .hero-inner { padding: 74px 24px 62px; }
+  .services-grid, .projects, .clients, .stats-band, .footer-grid { grid-template-columns: 1fr 1fr; }
+  .topbar-contact { gap: 14px; font-size: 0.78rem; }
+}
+@media (max-width: 460px) {
+  .services-grid, .projects, .clients, .footer-grid { grid-template-columns: 1fr; }
   .hero-actions .btn { flex: 1; text-align: center; }
 }
   </style>
 </head>
-<body>
-  <!-- ===== Header ===== -->
-  <header class="site-header" id="top">
+<body id="top">
+
+  <!-- ===== (1) Top bar ===== -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-contact">
+        <a href="tel:+18090000000">📞 (809) 000-0000 <em style="opacity:.6">· por confirmar</em></a>
+        <a href="mailto:info@jmcconstruye.com">✉️ info@jmcconstruye.com</a>
+      </div>
+      <div class="topbar-social" aria-label="Redes sociales">
+        <a href="#" title="Facebook">f</a>
+        <a href="#" title="Instagram">ig</a>
+        <a href="#" title="LinkedIn">in</a>
+        <a href="#" title="WhatsApp">wa</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== (2) Header / Nav ===== -->
+  <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#top" aria-label="Inicio">
         <span class="brand-mark">JMC</span>
@@ -447,11 +455,22 @@ a { color: inherit; text-decoration: none; }
       </a>
 
       <nav class="nav" id="nav">
+        <a href="#top">Inicio</a>
         <a href="#nosotros">Nosotros</a>
-        <a href="#servicios">Servicios</a>
+        <a href="#acerca">Acerca de</a>
+        <div class="dropdown" id="dropdown">
+          <button type="button" id="dropBtn" aria-expanded="false">Servicios ▾</button>
+          <div class="dropdown-menu">
+            <a href="#servicios">Diseño y Obra Civil</a>
+            <a href="#servicios">Remodelaciones y Fachadas</a>
+            <a href="#servicios">Pintura e Impermeabilización</a>
+            <a href="#servicios">Mantenimiento e Instalaciones</a>
+            <a href="#servicios">Licitaciones Públicas</a>
+          </div>
+        </div>
         <a href="#proyectos">Proyectos</a>
-        <a href="#sectores">Sectores</a>
-        <a href="#contacto" class="nav-cta">Contáctanos</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#contacto" class="nav-cta"><span class="btn btn-primary">Cotizar</span></a>
       </nav>
 
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
@@ -460,21 +479,20 @@ a { color: inherit; text-decoration: none; }
     </div>
   </header>
 
-  <!-- ===== Hero ===== -->
+  <!-- ===== (3) Hero ===== -->
   <section class="hero">
     <div class="container hero-inner">
       <p class="eyebrow">Ingeniería · Construcción · Mantenimiento</p>
-      <h1>Construimos infraestructura que <span>perdura</span>.</h1>
+      <h1>Aliados en cada obra,<br /><span>constructores de confianza.</span></h1>
       <p class="hero-lead">
-        Constructora JMC Ingenieros y Asociados ejecuta obra civil, remodelaciones,
-        pintura, impermeabilización y mantenimiento para instituciones públicas y
-        clientes privados en toda la República Dominicana.
+        Constructora JMC Ingenieros y Asociados ejecuta diseño y obra civil, remodelaciones,
+        pintura, impermeabilización y mantenimiento para instituciones públicas y clientes
+        privados en toda la República Dominicana.
       </p>
       <div class="hero-actions">
-        <a href="#contacto" class="btn btn-primary">Solicitar cotización</a>
+        <a href="#contacto" class="btn btn-primary">Cotizar proyecto</a>
         <a href="#proyectos" class="btn btn-ghost">Ver proyectos</a>
       </div>
-
       <ul class="hero-stats">
         <li><strong>+10</strong><span>obras ejecutadas</span></li>
         <li><strong>Público y privado</strong><span>sectores atendidos</span></li>
@@ -483,246 +501,299 @@ a { color: inherit; text-decoration: none; }
     </div>
   </section>
 
-  <!-- ===== Nosotros ===== -->
-  <section class="section" id="nosotros">
-    <div class="container grid-2">
-      <div>
-        <p class="section-eyebrow">Quiénes somos</p>
-        <h2>Una constructora dominicana comprometida con la calidad y el cumplimiento.</h2>
-        <p>
-          Somos una empresa de ingeniería y construcción con base en Santo Domingo,
-          Distrito Nacional. Ejecutamos proyectos de obra civil, adecuación de
-          espacios, pintura, impermeabilización y mantenimiento, cumpliendo con los
-          estándares técnicos y los plazos comprometidos.
-        </p>
-        <p>
-          Trabajamos habitualmente con instituciones del Estado a través de procesos
-          de licitación pública, así como con clientes privados, entregando obras
-          eficientes, transparentes y de calidad certificada.
-        </p>
-      </div>
-      <ul class="value-list">
-        <li>
-          <h3>Calidad certificada</h3>
-          <p>Ejecución eficiente respaldada por certificaciones de obra de nuestros clientes.</p>
-        </li>
-        <li>
-          <h3>Cumplimiento de plazos</h3>
-          <p>Planificación y control de obra para entregar en el tiempo acordado.</p>
-        </li>
-        <li>
-          <h3>Empresa formal</h3>
-          <p>Registrada y al día con sus obligaciones, habilitada para contratar con el Estado.</p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ===== Servicios ===== -->
-  <section class="section section-alt" id="servicios">
+  <!-- ===== (4) Lo que hacemos — Servicios ===== -->
+  <section class="section" id="servicios">
     <div class="container">
       <div class="section-head">
-        <p class="section-eyebrow">Qué hacemos</p>
+        <p class="section-eyebrow">Lo que hacemos</p>
         <h2>Nuestros servicios</h2>
         <p class="section-sub">Soluciones integrales de construcción y mantenimiento.</p>
       </div>
-
-      <div class="cards">
-        <article class="card">
-          <div class="card-icon">🏗️</div>
-          <h3>Obra civil</h3>
-          <p>Construcción de estructuras, parqueos, badenes, encache de cañadas e infraestructura urbana.</p>
+      <div class="services-grid">
+        <article class="service-card">
+          <div class="service-img">🏗️</div>
+          <div class="service-body">
+            <h3>Diseño y Obra Civil</h3>
+            <p>Construcción de estructuras, parqueos, badenes, encache de cañadas e infraestructura urbana.</p>
+          </div>
         </article>
-        <article class="card">
-          <div class="card-icon">🧱</div>
-          <h3>Remodelación y adecuación</h3>
-          <p>Readecuación de oficinas, salones y áreas de trabajo, ajustadas a cada necesidad.</p>
+        <article class="service-card">
+          <div class="service-img">🧱</div>
+          <div class="service-body">
+            <h3>Remodelaciones y Fachadas</h3>
+            <p>Readecuación de oficinas, salones y áreas de trabajo, con acabados de calidad.</p>
+          </div>
         </article>
-        <article class="card">
-          <div class="card-icon">🎨</div>
-          <h3>Pintura e impermeabilización</h3>
-          <p>Pintura interior y exterior, impermeabilización y protección de superficies.</p>
+        <article class="service-card">
+          <div class="service-img">🎨</div>
+          <div class="service-body">
+            <h3>Pintura e Impermeabilización</h3>
+            <p>Pintura interior y exterior, impermeabilización y protección de superficies.</p>
+          </div>
         </article>
-        <article class="card">
-          <div class="card-icon">🛠️</div>
-          <h3>Mantenimiento y reparaciones</h3>
-          <p>Mantenimiento correctivo y preventivo de edificaciones e instalaciones.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon">❄️</div>
-          <h3>Instalaciones</h3>
-          <p>Mantenimiento y reparación de sistemas de aire acondicionado y equipos.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon">📋</div>
-          <h3>Licitaciones públicas</h3>
-          <p>Gestión y ejecución de contratos con instituciones del Estado dominicano.</p>
+        <article class="service-card">
+          <div class="service-img">🛠️</div>
+          <div class="service-body">
+            <h3>Mantenimiento e Instalaciones</h3>
+            <p>Mantenimiento preventivo y correctivo de edificaciones, equipos y aire acondicionado.</p>
+          </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ===== Proyectos ===== -->
-  <section class="section" id="proyectos">
+  <!-- ===== (5) Proyectos ===== -->
+  <section class="section section-alt" id="proyectos">
     <div class="container">
       <div class="section-head">
         <p class="section-eyebrow">Experiencia</p>
-        <h2>Proyectos ejecutados</h2>
-        <p class="section-sub">Una muestra de obras realizadas para clientes públicos y privados.</p>
+        <h2>Proyectos</h2>
+        <p class="section-sub">Obras ejecutadas para clientes públicos y privados.</p>
+      </div>
+
+      <div class="project-cats">
+        <div class="project-cat">
+          <div class="project-cat-body">
+            <span class="tag">Sector Público</span>
+            <h3>Obras para el Estado</h3>
+            <p>Ejecución de contratos con ayuntamientos, ministerios e instituciones a través de licitaciones públicas.</p>
+          </div>
+        </div>
+        <div class="project-cat">
+          <div class="project-cat-body">
+            <span class="tag">Sector Privado</span>
+            <h3>Empresas y particulares</h3>
+            <p>Construcción, remodelación y mantenimiento con atención directa y presupuestos claros.</p>
+          </div>
+        </div>
       </div>
 
       <div class="projects">
         <article class="project">
-          <h3>Villa Don Oscar</h3>
-          <p class="project-loc">Crucero, Jarabacoa, La Vega · Privado</p>
+          <h4>Villa Don Oscar</h4>
+          <p class="project-loc">Jarabacoa, La Vega · Privado</p>
           <p>Supervisión y terminación de obra: acabados de superficie y perfilería exterior.</p>
         </article>
         <article class="project">
-          <h3>Construcción de badenes</h3>
-          <p class="project-loc">Villa Altagracia · Sector público</p>
+          <h4>Construcción de badenes</h4>
+          <p class="project-loc">Villa Altagracia · Público</p>
           <p>Construcción de badenes en diferentes calles del sector La Plata 1.</p>
         </article>
         <article class="project">
-          <h3>Encache de cañada</h3>
-          <p class="project-loc">Sector INVI-CEA, Villa Altagracia · Sector público</p>
+          <h4>Encache de cañada</h4>
+          <p class="project-loc">Sector INVI-CEA · Público</p>
           <p>Obras de encache y canalización para el manejo de aguas pluviales.</p>
         </article>
         <article class="project">
-          <h3>Comedor institucional ETED</h3>
-          <p class="project-loc">Empresa de Transmisión Eléctrica Dominicana · Sector público</p>
+          <h4>Comedor institucional ETED</h4>
+          <p class="project-loc">Transmisión Eléctrica · Público</p>
           <p>Obras civiles para la construcción del comedor del edificio principal.</p>
         </article>
         <article class="project">
-          <h3>Adecuación de áreas INESDYC</h3>
-          <p class="project-loc">Formación Diplomática y Consular · Sector público</p>
+          <h4>Adecuación de áreas INESDYC</h4>
+          <p class="project-loc">Formación Diplomática · Público</p>
           <p>Adecuación de salón de embajadores, almacén y área de cocina.</p>
         </article>
         <article class="project">
-          <h3>Pintura y mantenimiento ISFODOSU</h3>
-          <p class="project-loc">Instituto Salomé Ureña · Sector público</p>
+          <h4>Pintura y mantenimiento ISFODOSU</h4>
+          <p class="project-loc">Instituto Salomé Ureña · Público</p>
           <p>Mantenimiento de pintura exterior e impermeabilización de edificaciones.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ===== Sectores ===== -->
-  <section class="section section-dark" id="sectores">
+  <!-- ===== Nosotros ===== -->
+  <section class="section" id="nosotros">
     <div class="container grid-2">
-      <div class="sector">
-        <h3>Sector público</h3>
+      <div>
+        <p class="section-eyebrow">Quiénes somos</p>
+        <h2>Constructora dominicana comprometida con la calidad</h2>
         <p>
-          Participamos en procesos de compras y contrataciones del Estado
-          dominicano, ejecutando obras para ayuntamientos, ministerios e
-          instituciones autónomas con transparencia y cumplimiento normativo.
+          Somos una empresa de ingeniería y construcción con base en Santo Domingo,
+          Distrito Nacional. Ejecutamos proyectos de obra civil, adecuación de espacios,
+          pintura, impermeabilización y mantenimiento, cumpliendo con los estándares
+          técnicos y los plazos comprometidos.
+        </p>
+        <p>
+          Trabajamos habitualmente con instituciones del Estado a través de procesos de
+          licitación pública, así como con clientes privados, entregando obras eficientes,
+          transparentes y de calidad certificada.
         </p>
       </div>
-      <div class="sector">
-        <h3>Sector privado</h3>
-        <p>
-          Desarrollamos proyectos para empresas y particulares: construcción,
-          remodelación, mantenimiento y acabados, con atención directa y
-          presupuestos claros.
-        </p>
+      <ul class="value-list">
+        <li><h3>Calidad certificada</h3><p>Ejecución eficiente respaldada por certificaciones de obra de nuestros clientes.</p></li>
+        <li><h3>Cumplimiento de plazos</h3><p>Planificación y control de obra para entregar en el tiempo acordado.</p></li>
+        <li><h3>Empresa formal</h3><p>Registrada y al día, habilitada para contratar con el Estado.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== Acerca de (stats) ===== -->
+  <section class="section section-dark" id="acerca">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-eyebrow" style="color:var(--amber)">Acerca de</p>
+        <h2>En números</h2>
+        <p class="section-sub" style="color:rgba(255,255,255,0.75)">Nuestra experiencia respaldada por obras reales.</p>
+      </div>
+      <div class="stats-band">
+        <div class="stat"><b>+10</b><span>obras ejecutadas</span></div>
+        <div class="stat"><b>8+</b><span>instituciones atendidas</span></div>
+        <div class="stat"><b>2</b><span>sectores (público y privado)</span></div>
+        <div class="stat"><b>100%</b><span>compromiso con el plazo</span></div>
       </div>
     </div>
   </section>
 
-  <!-- ===== Contacto ===== -->
-  <section class="section section-alt" id="contacto">
-    <div class="container grid-2 contact">
-      <div>
-        <p class="section-eyebrow">Contacto</p>
-        <h2>Hablemos de tu proyecto</h2>
-        <p class="section-sub">Solicita una cotización o más información sobre nuestros servicios.</p>
+  <!-- ===== (6) Clientes ===== -->
+  <section class="section section-alt" id="clientes">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-eyebrow">Confían en nosotros</p>
+        <h2>Clientes</h2>
+        <p class="section-sub">Instituciones y empresas para las que hemos trabajado.</p>
+      </div>
+      <div class="clients">
+        <div class="client-logo">INABIMA</div>
+        <div class="client-logo">ETED</div>
+        <div class="client-logo">ISFODOSU</div>
+        <div class="client-logo">INESDYC</div>
+        <div class="client-logo">Ayto. Villa Altagracia</div>
+        <div class="client-logo">SRS Higuamo</div>
+        <div class="client-logo">CPADB</div>
+        <div class="client-logo">Sector privado</div>
+      </div>
+    </div>
+  </section>
 
-        <ul class="contact-list">
-          <li>
-            <span class="contact-label">Empresa</span>
-            Constructora JMC Ingenieros y Asociados
-          </li>
-          <li>
-            <span class="contact-label">RNC</span>
-            101704977
-          </li>
-          <li>
-            <span class="contact-label">Dirección</span>
-            Margarita esq. Central No. 15-B, Urbanización Gala,<br />
-            Distrito Nacional, Santo Domingo, R.D.
-          </li>
-          <li>
-            <span class="contact-label">Teléfono</span>
-            <a href="tel:+18090000000">(809) 000-0000</a> <em>· por confirmar</em>
-          </li>
-          <li>
-            <span class="contact-label">Correo</span>
-            <a href="mailto:info@constructorajmc.com">info@constructorajmc.com</a> <em>· por confirmar</em>
-          </li>
-        </ul>
+  <!-- ===== CTA Cotizar ===== -->
+  <section class="cta-band">
+    <div class="container">
+      <div>
+        <h2>¿Tienes un proyecto en mente?</h2>
+        <p>Solicita una cotización sin compromiso. Te respondemos a la brevedad.</p>
+      </div>
+      <a href="#contacto" class="btn btn-dark">Cotizar ahora</a>
+    </div>
+  </section>
+
+  <!-- ===== (7) Contacto ===== -->
+  <section class="section" id="contacto">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-eyebrow">Contáctanos</p>
+        <h2>Contacto</h2>
+        <p class="section-sub">Estamos listos para ayudarte con tu próximo proyecto.</p>
       </div>
 
-      <form class="contact-form" action="#" method="post" onsubmit="return false;">
-        <label>
-          Nombre
-          <input type="text" name="nombre" placeholder="Tu nombre" required />
-        </label>
-        <label>
-          Correo o teléfono
-          <input type="text" name="contacto" placeholder="¿Cómo te contactamos?" required />
-        </label>
-        <label>
-          Mensaje
-          <textarea name="mensaje" rows="4" placeholder="Cuéntanos sobre tu proyecto"></textarea>
-        </label>
-        <button type="submit" class="btn btn-primary">Enviar solicitud</button>
-        <p class="form-note">* El formulario se conectará a tu correo al publicar el sitio.</p>
-      </form>
+      <div class="contact-grid">
+        <div>
+          <div class="contact-block">
+            <h3>Oficina principal</h3>
+            <ul class="contact-list">
+              <li><span class="contact-label">Dirección</span>Margarita esq. Central No. 15-B, Urbanización Gala,<br />Distrito Nacional, Santo Domingo, R.D.</li>
+              <li><span class="contact-label">Teléfono</span><a href="tel:+18090000000">(809) 000-0000</a> <em>· por confirmar</em></li>
+              <li><span class="contact-label">Correo</span><a href="mailto:info@jmcconstruye.com">info@jmcconstruye.com</a> <em>· por confirmar</em></li>
+              <li><span class="contact-label">RNC</span>101704977</li>
+            </ul>
+          </div>
+
+          <div class="contact-block">
+            <h3>Horario de atención</h3>
+            <ul class="hours">
+              <li><span>Lunes a Viernes</span><span>8:00 a.m. – 5:00 p.m.</span></li>
+              <li><span>Sábado</span><span>8:00 a.m. – 12:00 m.</span></li>
+              <li><span>Domingo</span><span>Cerrado</span></li>
+            </ul>
+          </div>
+
+          <div class="contact-block">
+            <h3>Trabaja con nosotros</h3>
+            <p style="margin:0;color:var(--muted);font-size:0.94rem">
+              ¿Quieres formar parte del equipo? Envía tu currículum a
+              <a href="mailto:info@jmcconstruye.com" style="color:var(--navy);font-weight:600">info@jmcconstruye.com</a>
+              <em style="color:var(--amber-600);font-style:italic;font-size:0.82rem"> · correo por confirmar</em>
+            </p>
+          </div>
+        </div>
+
+        <form class="contact-form" action="#" method="post" onsubmit="return false;">
+          <label>Nombre<input type="text" name="nombre" placeholder="Tu nombre" required /></label>
+          <label>Correo o teléfono<input type="text" name="contacto" placeholder="¿Cómo te contactamos?" required /></label>
+          <label>Mensaje<textarea name="mensaje" rows="4" placeholder="Cuéntanos sobre tu proyecto"></textarea></label>
+          <button type="submit" class="btn btn-primary">Enviar solicitud</button>
+          <p class="form-note">* El formulario se conectará a tu correo al finalizar la configuración.</p>
+        </form>
+      </div>
     </div>
   </section>
 
   <!-- ===== Footer ===== -->
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <span class="brand-mark">JMC</span>
-        <div>
-          <strong>Constructora JMC Ingenieros y Asociados</strong>
-          <small>Ingeniería y construcción · República Dominicana</small>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">
+            <span class="brand-mark">JMC</span>
+            <div>
+              <strong>Constructora JMC</strong>
+              <small>Ingenieros y Asociados</small>
+            </div>
+          </div>
+          <p style="color:rgba(255,255,255,0.6);font-size:0.9rem">Ingeniería y construcción para el sector público y privado en la República Dominicana.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <a href="#nosotros">Nosotros</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#proyectos">Proyectos</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <p>Margarita esq. Central No. 15-B, D.N.</p>
+          <a href="tel:+18090000000">(809) 000-0000</a>
+          <a href="mailto:info@jmcconstruye.com">info@jmcconstruye.com</a>
+          <p>RNC 101704977</p>
         </div>
       </div>
-      <nav class="footer-nav">
-        <a href="#nosotros">Nosotros</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
       <p class="footer-copy">© <span id="year"></span> Constructora JMC Ingenieros y Asociados. Todos los derechos reservados.</p>
     </div>
   </footer>
 
   <script>
-// Mobile nav toggle
-const toggle = document.getElementById("navToggle");
-const nav = document.getElementById("nav");
+    // Menú móvil
+    const toggle = document.getElementById("navToggle");
+    const nav = document.getElementById("nav");
+    if (toggle && nav) {
+      toggle.addEventListener("click", () => {
+        const open = nav.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      nav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          nav.classList.remove("open");
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
 
-if (toggle && nav) {
-  toggle.addEventListener("click", () => {
-    const open = nav.classList.toggle("open");
-    toggle.setAttribute("aria-expanded", open ? "true" : "false");
-  });
+    // Dropdown Servicios (click en móvil)
+    const dropdown = document.getElementById("dropdown");
+    const dropBtn = document.getElementById("dropBtn");
+    if (dropdown && dropBtn) {
+      dropBtn.addEventListener("click", (e) => {
+        if (window.innerWidth <= 860) {
+          e.preventDefault();
+          dropdown.classList.toggle("open");
+        }
+      });
+    }
 
-  // Close menu when a link is tapped
-  nav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("open");
-      toggle.setAttribute("aria-expanded", "false");
-    });
-  });
-}
-
-// Current year in footer
-const yearEl = document.getElementById("year");
-if (yearEl) yearEl.textContent = new Date().getFullYear();
+    // Año en footer
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
