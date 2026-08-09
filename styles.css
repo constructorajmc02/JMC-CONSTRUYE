@@ -236,6 +236,26 @@ a { color: inherit; text-decoration: none; }
 .wa-float:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 14px 30px rgba(8,21,36,0.34); }
 .wa-float svg { width: 30px; height: 30px; fill: #fff; }
 
+/* ===== Animaciones: aparición suave al hacer scroll ===== */
+[data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity 0.7s cubic-bezier(.22,.61,.36,1), transform 0.7s cubic-bezier(.22,.61,.36,1); will-change: opacity, transform; }
+[data-reveal].is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1 !important; transform: none !important; transition: none; }
+}
+
+/* ===== Carrusel deslizante (marquee) para clientes, proyectos y equipo ===== */
+.marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.marquee-track { display: flex; gap: 22px; width: max-content; animation: marquee-scroll var(--marquee-duration, 40s) linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee .client-logo { width: 190px; flex: none; }
+.marquee .project { width: 330px; flex: none; }
+.marquee .team-card { width: 280px; flex: none; }
+@keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+  .marquee { -webkit-mask-image: none; mask-image: none; }
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 980px) {
   .services-grid { grid-template-columns: 1fr 1fr; }
