@@ -3,43 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Constructora JMC Ingenieros y Asociados | Ingeniería y Construcción en República Dominicana</title>
-  <meta name="description" content="Constructora JMC Ingenieros y Asociados: diseño y obra civil, remodelaciones, pintura, impermeabilización y mantenimiento para el sector público y privado en la República Dominicana. RNC 101704977." />
-  <meta name="theme-color" content="#0f2f56" />
+  <title>JMC Constructora | Construimos espacios que inspiran confianza</title>
+  <meta name="description" content="JMC Constructora — Ingenieros y Asociados. Diseño, construcción y gestión de proyectos para el sector público y privado en la República Dominicana. RNC 101704977." />
+  <meta name="theme-color" content="#0a1a2e" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Constructora JMC Ingenieros y Asociados" />
-  <meta property="og:description" content="Aliados en cada obra, constructores de confianza. Ingeniería y construcción para el sector público y privado en la República Dominicana." />
+  <meta property="og:title" content="JMC Constructora | Construimos espacios que inspiran confianza" />
+  <meta property="og:description" content="Diseño, construcción y gestión de proyectos para el sector público y privado en la República Dominicana." />
   <meta property="og:url" content="https://www.jmcconstruye.com" />
   <meta property="og:locale" content="es_DO" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <style>
 /* ============================================================
-   PALETA PROVISIONAL — se ajustará al recibir el moodboard.
-   Estructura/segmentación basada en la arquitectura de Fracorp.
+   Línea gráfica basada en el moodboard (Arq. Ambar Hilario):
+   azul marino profundo + naranja, tipografía sans bold.
    ============================================================ */
 :root {
-  --navy: #0f2f56;
-  --navy-700: #16406f;
-  --navy-900: #0a2038;
-  --amber: #f6a821;
-  --amber-600: #e0940f;
-  --ink: #1b2430;
-  --muted: #5c6a7a;
-  --line: #e5e9ef;
+  --navy: #0e2338;
+  --navy-800: #0c1d30;
+  --navy-900: #081524;
+  --navy-card: #10273f;
+  --orange: #ea6a2c;
+  --orange-600: #d65c22;
+  --orange-050: rgba(234,106,44,0.1);
+  --ink: #1c2634;
+  --muted: #5f6b7a;
+  --line: #e6e9ee;
   --bg: #ffffff;
-  --bg-alt: #f5f7fa;
+  --bg-alt: #f4f6f9;
   --white: #ffffff;
   --radius: 14px;
   --radius-sm: 10px;
-  --shadow: 0 10px 30px rgba(15, 47, 86, 0.08);
-  --shadow-sm: 0 4px 14px rgba(15, 47, 86, 0.07);
-  --container: 1160px;
-  --font-head: "Barlow Condensed", "Inter", sans-serif;
+  --shadow: 0 12px 34px rgba(8,21,36,0.10);
+  --shadow-sm: 0 5px 16px rgba(8,21,36,0.07);
+  --container: 1180px;
+  --font-head: "Poppins", "Inter", sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
 }
 
@@ -50,384 +52,214 @@ body {
   font-family: var(--font-body);
   color: var(--ink);
   background: var(--bg);
-  line-height: 1.6;
+  line-height: 1.62;
   -webkit-font-smoothing: antialiased;
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
-
-.container {
-  width: 100%;
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 0 24px;
-}
+.container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+.text-orange { color: var(--orange); }
 
 /* ===== Buttons ===== */
 .btn {
-  display: inline-block;
-  padding: 13px 26px;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: 0.3px;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-  cursor: pointer;
-  border: 2px solid transparent;
-}
-.btn-primary { background: var(--amber); color: var(--navy-900); }
-.btn-primary:hover { background: var(--amber-600); transform: translateY(-2px); box-shadow: 0 10px 22px rgba(246,168,33,0.35); }
-.btn-ghost { border-color: rgba(255,255,255,0.5); color: var(--white); }
-.btn-ghost:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
-.btn-dark { background: var(--navy); color: var(--white); }
-.btn-dark:hover { background: var(--navy-700); transform: translateY(-2px); }
-
-/* ===== (1) Top bar ===== */
-.topbar {
-  background: var(--navy-900);
-  color: rgba(255,255,255,0.82);
-  font-size: 0.85rem;
-}
-.topbar-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 42px;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-.topbar-contact { display: flex; gap: 22px; flex-wrap: wrap; }
-.topbar-contact a { display: inline-flex; align-items: center; gap: 7px; }
-.topbar-contact a:hover { color: var(--amber); }
-.topbar-social { display: flex; gap: 10px; }
-.topbar-social a {
-  width: 26px; height: 26px;
-  display: grid; place-items: center;
-  border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 6px;
-  font-size: 0.72rem;
-  font-weight: 600;
-}
-.topbar-social a:hover { background: var(--amber); color: var(--navy-900); border-color: var(--amber); }
-
-/* ===== (2) Header / Nav ===== */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 60;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: saturate(140%) blur(10px);
-  border-bottom: 1px solid var(--line);
-}
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 76px;
-}
-.brand { display: flex; align-items: center; gap: 12px; }
-.brand-mark {
-  display: grid; place-items: center;
-  width: 48px; height: 48px;
-  border-radius: 10px;
-  background: var(--navy);
-  color: var(--amber);
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 26px; border-radius: 8px;
   font-family: var(--font-head);
-  font-weight: 700;
-  font-size: 1.3rem;
-  letter-spacing: 0.5px;
+  font-weight: 600; font-size: 0.95rem; letter-spacing: 0.2px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+  cursor: pointer; border: 2px solid transparent;
 }
-.brand-text { display: flex; flex-direction: column; line-height: 1.15; }
-.brand-text strong { font-size: 1.06rem; color: var(--navy); }
-.brand-text small { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.3px; }
+.btn-primary { background: var(--orange); color: var(--white); }
+.btn-primary:hover { background: var(--orange-600); transform: translateY(-2px); box-shadow: 0 10px 22px rgba(234,106,44,0.35); }
+.btn-outline { border-color: rgba(255,255,255,0.55); color: var(--white); }
+.btn-outline:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+.btn-outline-dark { border-color: var(--navy); color: var(--navy); }
+.btn-outline-dark:hover { background: var(--navy); color: var(--white); transform: translateY(-2px); }
 
-.nav { display: flex; align-items: center; gap: 26px; }
-.nav > a, .dropdown > button {
-  font-family: inherit;
-  font-weight: 500;
-  color: var(--ink);
-  font-size: 0.95rem;
-  background: none; border: 0; cursor: pointer;
-  padding: 6px 0;
-  display: inline-flex; align-items: center; gap: 5px;
-}
-.nav > a:hover, .dropdown > button:hover { color: var(--navy); }
-.nav .nav-cta { color: var(--navy-900); }
+/* ===== Brand / Logo ===== */
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-logo { width: 46px; height: 46px; flex: none; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+.brand-text strong { font-family: var(--font-head); font-weight: 800; font-size: 1.15rem; letter-spacing: 1px; color: var(--navy); }
+.brand-text small { font-size: 0.64rem; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; }
+.on-dark .brand-text strong { color: var(--white); }
+.on-dark .brand-text small { color: rgba(255,255,255,0.65); }
 
-/* Dropdown Servicios */
-.dropdown { position: relative; }
-.dropdown-menu {
-  position: absolute;
-  top: calc(100% + 12px);
-  left: 50%;
-  transform: translateX(-50%) translateY(8px);
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow);
-  min-width: 250px;
-  padding: 8px;
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.2s ease;
-}
-.dropdown:hover .dropdown-menu,
-.dropdown:focus-within .dropdown-menu {
-  opacity: 1; visibility: visible;
-  transform: translateX(-50%) translateY(0);
-}
-.dropdown-menu a {
-  display: block;
-  padding: 10px 14px;
-  border-radius: 8px;
-  font-size: 0.92rem;
-  color: var(--ink);
-}
-.dropdown-menu a:hover { background: var(--bg-alt); color: var(--navy); }
+/* ===== Top bar ===== */
+.topbar { background: var(--navy-900); color: rgba(255,255,255,0.8); font-size: 0.84rem; }
+.topbar-inner { display: flex; align-items: center; justify-content: space-between; min-height: 40px; gap: 16px; flex-wrap: wrap; }
+.topbar-contact { display: flex; gap: 20px; flex-wrap: wrap; }
+.topbar-contact a:hover { color: var(--orange); }
+.topbar-social { display: flex; gap: 9px; }
+.topbar-social a { width: 25px; height: 25px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,0.22); border-radius: 6px; font-size: 0.7rem; font-weight: 600; }
+.topbar-social a:hover { background: var(--orange); color: var(--white); border-color: var(--orange); }
 
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none; border: 0; cursor: pointer;
-  padding: 8px;
-}
+/* ===== Header / Nav ===== */
+.site-header { position: sticky; top: 0; z-index: 60; background: rgba(255,255,255,0.96); backdrop-filter: saturate(140%) blur(10px); border-bottom: 1px solid var(--line); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 78px; }
+.nav { display: flex; align-items: center; gap: 28px; }
+.nav > a { font-weight: 500; color: var(--ink); font-size: 0.95rem; }
+.nav > a:hover { color: var(--orange); }
+.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: 0; cursor: pointer; padding: 8px; }
 .nav-toggle span { width: 26px; height: 3px; background: var(--navy); border-radius: 2px; transition: 0.25s; }
 
-/* ===== (3) Hero ===== */
-.hero {
-  position: relative;
-  color: var(--white);
+/* ===== Hero ===== */
+.hero { background: var(--navy); color: var(--white); position: relative; overflow: hidden; }
+.hero-inner { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; padding: 84px 24px 78px; }
+.eyebrow { text-transform: uppercase; letter-spacing: 3px; font-size: 0.76rem; font-weight: 600; color: var(--orange); margin: 0 0 18px; }
+.hero h1 { font-family: var(--font-head); font-weight: 800; font-size: clamp(2.3rem, 4.6vw, 3.6rem); line-height: 1.08; margin: 0 0 20px; letter-spacing: -0.5px; }
+.hero-lead { font-size: clamp(1.02rem, 1.7vw, 1.18rem); color: rgba(255,255,255,0.82); max-width: 540px; margin: 0 0 30px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+.hero-visual {
+  position: relative; border-radius: 16px; overflow: hidden;
+  min-height: 380px;
   background:
-    linear-gradient(135deg, rgba(10,32,56,0.94), rgba(15,47,86,0.82)),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M0 59h60M59 0v60' stroke='%23ffffff' stroke-opacity='0.05' stroke-width='1'/%3E%3C/svg%3E"),
-    var(--navy);
-  overflow: hidden;
+    linear-gradient(160deg, rgba(234,106,44,0.14), rgba(8,21,36,0.55)),
+    linear-gradient(135deg, #17324e, #0a1a2e);
+  border: 1px solid rgba(255,255,255,0.1);
+  display: grid; place-items: center; text-align: center; color: rgba(255,255,255,0.7);
 }
-.hero::after {
-  content: "";
-  position: absolute;
-  right: -120px; top: -120px;
-  width: 460px; height: 460px;
-  background: radial-gradient(circle, rgba(246,168,33,0.26), transparent 70%);
-  pointer-events: none;
-}
-.hero-inner { padding: 104px 24px 92px; position: relative; z-index: 1; max-width: 940px; }
-.eyebrow {
-  text-transform: uppercase; letter-spacing: 3px;
-  font-size: 0.78rem; font-weight: 600; color: var(--amber);
-  margin: 0 0 16px;
-}
-.hero h1 {
-  font-family: var(--font-head);
-  font-weight: 700;
-  font-size: clamp(2.5rem, 6vw, 4.4rem);
-  line-height: 1.02;
-  margin: 0 0 20px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-.hero h1 span { color: var(--amber); }
-.hero-lead { font-size: clamp(1.05rem, 2vw, 1.25rem); color: rgba(255,255,255,0.86); max-width: 640px; margin: 0 0 34px; }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 56px; }
-.hero-stats {
-  list-style: none; display: flex; flex-wrap: wrap; gap: 44px;
-  margin: 0; padding: 28px 0 0; border-top: 1px solid rgba(255,255,255,0.15);
-}
-.hero-stats li { display: flex; flex-direction: column; }
-.hero-stats strong { font-family: var(--font-head); font-size: 1.8rem; color: var(--white); }
-.hero-stats span { font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+.hero-visual .ph { font-size: 3rem; margin-bottom: 10px; }
+.hero-visual small { display:block; font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+
+/* ===== Values band ===== */
+.values { background: var(--navy-800); color: var(--white); border-top: 1px solid rgba(255,255,255,0.07); }
+.values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; padding: 40px 24px; }
+.value { display: flex; gap: 14px; align-items: flex-start; }
+.value .ico { flex: none; width: 44px; height: 44px; display: grid; place-items: center; border: 1.5px solid var(--orange); border-radius: 10px; color: var(--orange); }
+.value h4 { font-family: var(--font-head); font-weight: 600; margin: 0 0 3px; font-size: 1rem; }
+.value p { margin: 0; font-size: 0.85rem; color: rgba(255,255,255,0.72); }
 
 /* ===== Sections base ===== */
-.section { padding: 88px 0; }
+.section { padding: 92px 0; }
 .section-alt { background: var(--bg-alt); }
 .section-dark { background: var(--navy); color: var(--white); }
-.section-head { max-width: 660px; margin: 0 auto 54px; text-align: center; }
-.section-eyebrow {
-  text-transform: uppercase; letter-spacing: 2px;
-  font-size: 0.76rem; font-weight: 700; color: var(--amber-600); margin: 0 0 10px;
-}
-.section h2 {
-  font-family: var(--font-head); font-weight: 700;
-  font-size: clamp(1.9rem, 3.6vw, 2.7rem); line-height: 1.08;
-  margin: 0 0 14px; color: var(--navy); text-transform: uppercase; letter-spacing: 0.5px;
-}
+.section-head { max-width: 680px; margin: 0 auto 56px; }
+.section-head.center { text-align: center; margin-left: auto; margin-right: auto; }
+.section-eyebrow { text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; font-weight: 700; color: var(--orange); margin: 0 0 12px; }
+.section h2 { font-family: var(--font-head); font-weight: 700; font-size: clamp(1.8rem, 3.3vw, 2.5rem); line-height: 1.14; margin: 0 0 14px; color: var(--navy); letter-spacing: -0.5px; }
 .section-dark h2, .section-dark h3 { color: var(--white); }
 .section-sub { color: var(--muted); margin: 0; font-size: 1.05rem; }
+.section-dark .section-sub { color: rgba(255,255,255,0.75); }
 
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+/* ===== Nosotros ===== */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
+.about-visual { border-radius: 16px; min-height: 360px; background: linear-gradient(135deg, #17324e, #0a1a2e); display: grid; place-items: center; color: rgba(255,255,255,0.6); text-align: center; }
+.about-visual .ph { font-size: 2.6rem; margin-bottom: 8px; }
+.about-visual small { font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase; }
+.purpose-card { background: var(--navy-card); color: var(--white); border-radius: 16px; padding: 30px; margin-top: 22px; position: relative; }
+.purpose-card .section-eyebrow { color: var(--orange); }
+.purpose-card h3 { font-family: var(--font-head); font-weight: 700; font-size: 1.5rem; margin: 0 0 10px; line-height: 1.2; }
+.purpose-card p { margin: 0; color: rgba(255,255,255,0.8); font-size: 0.95rem; }
+.about-stats { display: flex; gap: 34px; margin-top: 26px; flex-wrap: wrap; }
+.about-stats .stat b { font-family: var(--font-head); font-weight: 800; font-size: 2rem; color: var(--orange); display: block; line-height: 1; }
+.about-stats .stat span { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); }
 
-/* ===== (4) Lo que hacemos — Servicios ===== */
-.services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-.service-card {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-  display: flex; flex-direction: column;
-}
+/* ===== Servicios (6 numeradas) ===== */
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.service-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px 26px; box-shadow: var(--shadow-sm); transition: transform 0.18s ease, box-shadow 0.18s ease; }
 .service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
-/* Marcador de imagen: se reemplaza por foto real del moodboard */
-.service-img {
-  aspect-ratio: 4 / 3;
-  background: linear-gradient(135deg, var(--navy), var(--navy-700));
-  display: grid; place-items: center;
-  color: rgba(255,255,255,0.9);
-  font-size: 2.2rem;
-  position: relative;
-}
-.service-img::after {
-  content: "Imagen";
-  position: absolute; bottom: 8px; right: 10px;
-  font-size: 0.62rem; letter-spacing: 1px; text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-}
-.service-body { padding: 22px 22px 26px; }
-.service-body h3 { margin: 0 0 8px; color: var(--navy); font-size: 1.12rem; }
-.service-body p { margin: 0; color: var(--muted); font-size: 0.94rem; }
+.service-num { font-family: var(--font-head); font-weight: 700; color: var(--orange); font-size: 0.9rem; letter-spacing: 1px; }
+.service-card h3 { margin: 10px 0 8px; color: var(--navy); font-size: 1.18rem; font-family: var(--font-head); font-weight: 600; }
+.service-card p { margin: 0; color: var(--muted); font-size: 0.94rem; }
 
-/* ===== (5) Proyectos por categoría ===== */
-.project-cats { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 40px; }
-.project-cat {
-  position: relative;
-  border-radius: var(--radius);
-  overflow: hidden;
-  min-height: 300px;
-  display: flex; align-items: flex-end;
-  color: var(--white);
-  background: linear-gradient(180deg, rgba(10,32,56,0.25), rgba(10,32,56,0.9)), linear-gradient(135deg, var(--navy-700), var(--navy-900));
-}
-.project-cat-body { padding: 30px 32px; position: relative; z-index: 1; }
-.project-cat h3 { font-family: var(--font-head); font-size: 1.9rem; margin: 0 0 8px; text-transform: uppercase; }
-.project-cat p { margin: 0 0 14px; color: rgba(255,255,255,0.85); font-size: 0.97rem; max-width: 90%; }
-.project-cat .tag { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--amber); font-weight: 700; }
-
+/* ===== Proyectos ===== */
+.proj-note { color: rgba(255,255,255,0.6); font-size: 0.86rem; margin: 8px 0 0; font-style: italic; }
+.project-cats { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 34px; }
+.project-cat { position: relative; border-radius: var(--radius); overflow: hidden; min-height: 210px; display: flex; align-items: flex-end; color: var(--white); background: linear-gradient(180deg, rgba(8,21,36,0.15), rgba(8,21,36,0.88)), linear-gradient(135deg, #1a3654, #0a1a2e); }
+.project-cat-body { padding: 26px 28px; }
+.project-cat .tag { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 1px; color: var(--orange); font-weight: 700; }
+.project-cat h3 { font-family: var(--font-head); font-weight: 700; font-size: 1.5rem; margin: 6px 0 6px; }
+.project-cat p { margin: 0; color: rgba(255,255,255,0.82); font-size: 0.92rem; max-width: 92%; }
 .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.project {
-  border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 24px; background: var(--white); position: relative; overflow: hidden;
-}
-.project::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--amber); }
-.project h4 { margin: 0 0 4px; color: var(--navy); font-size: 1.08rem; }
-.project-loc { margin: 0 0 10px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--amber-600); font-weight: 600; }
-.project p:last-child { margin: 0; color: var(--muted); font-size: 0.92rem; }
+.project { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); overflow: hidden; }
+.project-img { aspect-ratio: 16/10; background: linear-gradient(135deg, #17324e, #0a1a2e); display: grid; place-items: center; font-size: 1.8rem; color: rgba(255,255,255,0.55); position: relative; }
+.project-img::after { content: "Foto"; position: absolute; bottom: 7px; right: 9px; font-size: 0.58rem; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+.project-body { padding: 18px 20px 22px; }
+.project-body .tag { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--orange); font-weight: 700; }
+.project-body h4 { font-family: var(--font-head); font-weight: 600; margin: 4px 0 6px; color: var(--white); font-size: 1.06rem; }
+.project-body p { margin: 0; color: rgba(255,255,255,0.7); font-size: 0.88rem; }
 
-/* ===== Nosotros / Acerca de ===== */
-#nosotros h2, #acerca h2 { text-align: left; }
-.value-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
-.value-list li {
-  background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 20px 22px; box-shadow: var(--shadow-sm); border-left: 4px solid var(--amber);
-}
-.value-list h3 { margin: 0 0 6px; color: var(--navy); font-size: 1.06rem; }
-.value-list p { margin: 0; color: var(--muted); font-size: 0.94rem; }
+/* ===== Equipo ===== */
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.team-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); text-align: center; }
+.team-photo { aspect-ratio: 1/1; background: linear-gradient(135deg, #e9edf2, #d8dfe8); display: grid; place-items: center; font-size: 2.4rem; color: #9aa7b5; }
+.team-body { padding: 18px; }
+.team-body h4 { margin: 0 0 3px; font-family: var(--font-head); font-weight: 600; color: var(--navy); font-size: 1.02rem; }
+.team-body span { color: var(--orange); font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
 
-/* Stats band */
-.stats-band { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
-.stat b { display: block; font-family: var(--font-head); font-size: 2.4rem; color: var(--amber); line-height: 1; }
-.stat span { color: rgba(255,255,255,0.8); font-size: 0.9rem; }
-
-/* ===== (6) Clientes ===== */
-.clients { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-.client-logo {
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  background: var(--white);
-  min-height: 92px;
-  display: grid; place-items: center;
-  text-align: center;
-  padding: 14px;
-  color: var(--navy);
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
+/* ===== Clientes ===== */
+.clients { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.client-logo { border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--white); min-height: 88px; display: grid; place-items: center; text-align: center; padding: 14px; color: var(--navy); font-weight: 600; font-size: 0.88rem; transition: transform 0.15s ease, box-shadow 0.15s ease; }
 .client-logo:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
 
-/* ===== (7) Contacto ===== */
-.contact-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: start; }
+/* ===== CTA band ===== */
+.cta-band { background: var(--orange); color: var(--white); }
+.cta-band .container { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 44px 24px; flex-wrap: wrap; }
+.cta-band h2 { color: var(--white); margin: 0; font-family: var(--font-head); font-weight: 700; font-size: clamp(1.5rem,2.6vw,2rem); }
+.cta-band p { margin: 5px 0 0; color: rgba(255,255,255,0.9); }
+.cta-band .btn-white { background: var(--white); color: var(--navy); }
+.cta-band .btn-white:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0,0,0,0.18); }
+
+/* ===== Contacto ===== */
+.contact-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: start; }
 .contact-block { margin-bottom: 26px; }
-.contact-block h3 { margin: 0 0 10px; color: var(--navy); font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--font-head); }
+.contact-block h3 { margin: 0 0 10px; color: var(--navy); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--font-head); font-weight: 600; }
 .contact-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
 .contact-list li { display: flex; flex-direction: column; }
 .contact-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); font-weight: 700; margin-bottom: 2px; }
 .contact-list a { color: var(--navy); font-weight: 600; }
-.contact-list em { color: var(--amber-600); font-style: italic; font-size: 0.82rem; }
+.contact-list em { color: var(--orange); font-style: italic; font-size: 0.8rem; }
 .hours { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
-.hours li { display: flex; justify-content: space-between; border-bottom: 1px dashed var(--line); padding: 5px 0; font-size: 0.92rem; color: var(--ink); }
+.hours li { display: flex; justify-content: space-between; border-bottom: 1px dashed var(--line); padding: 5px 0; font-size: 0.9rem; }
 .hours span:last-child { color: var(--muted); }
-
-.contact-form {
-  background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 30px; box-shadow: var(--shadow); display: grid; gap: 16px;
-}
-.contact-form label { display: grid; gap: 6px; font-weight: 600; font-size: 0.88rem; color: var(--ink); }
-.contact-form input, .contact-form textarea {
-  font-family: inherit; font-size: 0.96rem; padding: 12px 14px;
-  border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--bg-alt);
-  transition: border 0.15s ease, background 0.15s ease;
-}
-.contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--navy); background: var(--white); }
-.contact-form .btn { width: 100%; border: 0; }
+.contact-form { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; box-shadow: var(--shadow); display: grid; gap: 16px; }
+.contact-form label { display: grid; gap: 6px; font-weight: 600; font-size: 0.87rem; color: var(--ink); }
+.contact-form input, .contact-form textarea { font-family: inherit; font-size: 0.96rem; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--bg-alt); transition: border 0.15s, background 0.15s; }
+.contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--orange); background: var(--white); }
+.contact-form .btn { width: 100%; justify-content: center; border: 0; }
 .form-note { margin: 0; font-size: 0.8rem; color: var(--muted); text-align: center; }
 
-/* CTA Cotizar band */
-.cta-band { background: var(--amber); color: var(--navy-900); }
-.cta-band .container { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 40px; padding-bottom: 40px; flex-wrap: wrap; }
-.cta-band h2 { color: var(--navy-900); margin: 0; text-align: left; }
-.cta-band p { margin: 4px 0 0; color: var(--navy-700); }
-
 /* ===== Footer ===== */
-.site-footer { background: var(--navy-900); color: rgba(255,255,255,0.75); padding: 54px 0 30px; }
-.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; margin-bottom: 30px; }
-.footer-brand { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
-.footer-brand strong { display: block; color: var(--white); }
-.footer-brand small { color: rgba(255,255,255,0.6); }
-.footer-col h4 { color: var(--white); font-size: 0.95rem; margin: 0 0 14px; text-transform: uppercase; letter-spacing: 0.5px; }
-.footer-col a, .footer-col p { display: block; color: rgba(255,255,255,0.72); font-size: 0.92rem; margin: 0 0 9px; }
-.footer-col a:hover { color: var(--amber); }
+.site-footer { background: var(--navy-900); color: rgba(255,255,255,0.72); padding: 56px 0 30px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 34px; margin-bottom: 30px; }
+.footer-brand-text { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin: 14px 0 0; }
+.footer-col h4 { color: var(--white); font-size: 0.92rem; margin: 0 0 14px; text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--font-head); font-weight: 600; }
+.footer-col a, .footer-col p { display: block; color: rgba(255,255,255,0.7); font-size: 0.9rem; margin: 0 0 9px; }
+.footer-col a:hover { color: var(--orange); }
 .footer-copy { margin: 0; font-size: 0.82rem; color: rgba(255,255,255,0.5); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 22px; text-align: center; }
 
 /* ===== Responsive ===== */
 @media (max-width: 980px) {
   .services-grid { grid-template-columns: 1fr 1fr; }
-  .clients { grid-template-columns: repeat(3, 1fr); }
-  .stats-band { grid-template-columns: 1fr 1fr; }
+  .values-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid, .clients { grid-template-columns: repeat(3, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 860px) {
-  .nav {
-    position: fixed; inset: 118px 0 auto 0;
-    flex-direction: column; align-items: stretch; gap: 0;
-    background: var(--white); border-bottom: 1px solid var(--line);
-    padding: 12px 24px 20px; transform: translateY(-160%);
-    transition: transform 0.28s ease; box-shadow: var(--shadow);
-  }
+  .nav { position: fixed; inset: 118px 0 auto 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--white); border-bottom: 1px solid var(--line); padding: 12px 24px 20px; transform: translateY(-160%); transition: transform 0.28s ease; box-shadow: var(--shadow); }
   .nav.open { transform: translateY(0); }
-  .nav > a, .dropdown > button { padding: 14px 4px; border-bottom: 1px solid var(--line); width: 100%; justify-content: space-between; }
-  .dropdown-menu { position: static; transform: none; opacity: 1; visibility: visible; box-shadow: none; border: 0; min-width: 0; padding: 0 0 10px 12px; }
-  .dropdown:not(.open) .dropdown-menu { display: none; }
+  .nav > a { padding: 14px 4px; border-bottom: 1px solid var(--line); }
+  .nav .btn { margin-top: 12px; justify-content: center; }
   .nav-toggle { display: flex; }
-  .grid-2, .contact-grid, .project-cats, .cta-band .container { grid-template-columns: 1fr; }
-  .contact-grid { display: grid; }
+  .hero-inner, .about-grid, .contact-grid, .project-cats, .projects { grid-template-columns: 1fr; }
+  .hero-visual { min-height: 280px; }
 }
 @media (max-width: 620px) {
-  .section { padding: 62px 0; }
-  .hero-inner { padding: 74px 24px 62px; }
-  .services-grid, .projects, .clients, .stats-band, .footer-grid { grid-template-columns: 1fr 1fr; }
-  .topbar-contact { gap: 14px; font-size: 0.78rem; }
+  .section { padding: 64px 0; }
+  .hero-inner { padding: 64px 24px 58px; }
+  .services-grid, .projects, .clients, .team-grid, .values-grid, .footer-grid { grid-template-columns: 1fr 1fr; }
+  .topbar-contact { gap: 12px; font-size: 0.77rem; }
 }
 @media (max-width: 460px) {
-  .services-grid, .projects, .clients, .footer-grid { grid-template-columns: 1fr; }
-  .hero-actions .btn { flex: 1; text-align: center; }
+  .services-grid, .clients, .team-grid, .values-grid, .footer-grid { grid-template-columns: 1fr; }
+  .hero-actions .btn { flex: 1; justify-content: center; }
 }
   </style>
 </head>
 <body id="top">
 
-  <!-- ===== (1) Top bar ===== -->
+  <!-- ===== Top bar ===== -->
   <div class="topbar">
     <div class="container topbar-inner">
       <div class="topbar-contact">
@@ -443,34 +275,31 @@ a { color: inherit; text-decoration: none; }
     </div>
   </div>
 
-  <!-- ===== (2) Header / Nav ===== -->
+  <!-- ===== Header / Nav ===== -->
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#top" aria-label="Inicio">
-        <span class="brand-mark">JMC</span>
+        <svg class="brand-logo" viewBox="0 0 48 48" role="img" aria-label="JMC Constructora">
+          <rect x="1" y="1" width="46" height="46" rx="11" fill="#0e2338"/>
+          <path d="M24 10 L38 20 V21 H10 V20 Z" fill="#ea6a2c"/>
+          <rect x="13" y="23" width="5" height="15" rx="1" fill="#ffffff"/>
+          <rect x="21.5" y="23" width="5" height="15" rx="1" fill="#ffffff"/>
+          <rect x="30" y="23" width="5" height="15" rx="1" fill="#ea6a2c"/>
+        </svg>
         <span class="brand-text">
-          <strong>Constructora JMC</strong>
-          <small>Ingenieros y Asociados</small>
+          <strong>JMC</strong>
+          <small>Constructora</small>
         </span>
       </a>
 
       <nav class="nav" id="nav">
         <a href="#top">Inicio</a>
         <a href="#nosotros">Nosotros</a>
-        <a href="#acerca">Acerca de</a>
-        <div class="dropdown" id="dropdown">
-          <button type="button" id="dropBtn" aria-expanded="false">Servicios ▾</button>
-          <div class="dropdown-menu">
-            <a href="#servicios">Diseño y Obra Civil</a>
-            <a href="#servicios">Remodelaciones y Fachadas</a>
-            <a href="#servicios">Pintura e Impermeabilización</a>
-            <a href="#servicios">Mantenimiento e Instalaciones</a>
-            <a href="#servicios">Licitaciones Públicas</a>
-          </div>
-        </div>
+        <a href="#servicios">Servicios</a>
         <a href="#proyectos">Proyectos</a>
+        <a href="#equipo">Equipo</a>
         <a href="#contacto">Contacto</a>
-        <a href="#contacto" class="nav-cta"><span class="btn btn-primary">Cotizar</span></a>
+        <a href="#contacto" class="btn btn-primary">Cotizar proyecto</a>
       </nav>
 
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
@@ -479,76 +308,143 @@ a { color: inherit; text-decoration: none; }
     </div>
   </header>
 
-  <!-- ===== (3) Hero ===== -->
+  <!-- ===== Hero ===== -->
   <section class="hero">
     <div class="container hero-inner">
-      <p class="eyebrow">Ingeniería · Construcción · Mantenimiento</p>
-      <h1>Aliados en cada obra,<br /><span>constructores de confianza.</span></h1>
-      <p class="hero-lead">
-        Constructora JMC Ingenieros y Asociados ejecuta diseño y obra civil, remodelaciones,
-        pintura, impermeabilización y mantenimiento para instituciones públicas y clientes
-        privados en toda la República Dominicana.
-      </p>
-      <div class="hero-actions">
-        <a href="#contacto" class="btn btn-primary">Cotizar proyecto</a>
-        <a href="#proyectos" class="btn btn-ghost">Ver proyectos</a>
+      <div>
+        <p class="eyebrow">Diseño · Construcción · Gestión</p>
+        <h1>Construimos espacios que <span class="text-orange">inspiran confianza.</span></h1>
+        <p class="hero-lead">
+          Diseñamos, construimos y transformamos materia gris en proyectos sólidos,
+          funcionales y duraderos, para el sector público y privado en la República Dominicana.
+        </p>
+        <div class="hero-actions">
+          <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
+          <a href="#nosotros" class="btn btn-outline">Conocer JMC</a>
+        </div>
       </div>
-      <ul class="hero-stats">
-        <li><strong>+10</strong><span>obras ejecutadas</span></li>
-        <li><strong>Público y privado</strong><span>sectores atendidos</span></li>
-        <li><strong>RNC 101704977</strong><span>empresa formal</span></li>
-      </ul>
+      <div class="hero-visual">
+        <div>
+          <div class="ph">🏗️</div>
+          <small>Foto de obra JMC</small>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ===== (4) Lo que hacemos — Servicios ===== -->
-  <section class="section" id="servicios">
+  <!-- ===== Valores ===== -->
+  <section class="values">
+    <div class="container values-grid">
+      <div class="value">
+        <span class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg>
+        </span>
+        <div><h4>Calidad</h4><p>En cada etapa del proceso.</p></div>
+      </div>
+      <div class="value">
+        <span class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a8 8 0 0 1 16 0"/><path d="M3 14h18v3H3z"/><path d="M9 6.5A8 8 0 0 1 12 6"/></svg>
+        </span>
+        <div><h4>Seguridad</h4><p>Protegemos a nuestro equipo y cada proyecto.</p></div>
+      </div>
+      <div class="value">
+        <span class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12l3 3 5-6"/><path d="M4 7l5-3 3 2 3-2 5 3v6c0 4-4 6-8 7-4-1-8-3-8-7z"/></svg>
+        </span>
+        <div><h4>Compromiso</h4><p>Cumplimos lo que prometemos.</p></div>
+      </div>
+      <div class="value">
+        <span class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 7.7l5.4-.8z"/></svg>
+        </span>
+        <div><h4>Confianza</h4><p>Relaciones claras, transparentes y duraderas.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Nosotros ===== -->
+  <section class="section" id="nosotros">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <p class="section-eyebrow">Quiénes somos</p>
+          <h2>Construimos con visión y precisión.</h2>
+          <p class="section-sub">
+            En JMC combinamos criterio técnico, planificación y ejecución responsable para
+            llevar cada proyecto desde la idea inicial hasta su entrega. Trabajamos para
+            instituciones del Estado y clientes privados en toda la República Dominicana.
+          </p>
+          <div class="purpose-card">
+            <p class="section-eyebrow">Nuestro propósito</p>
+            <h3>Crear espacios que generen confianza desde el primer trazo.</h3>
+            <p>Cuidamos los materiales, los procesos, la seguridad y el cumplimiento. Cada decisión técnica tiene un propósito: entregar resultados que perduren.</p>
+          </div>
+          <div class="about-stats">
+            <div class="stat"><b>+35</b><span>Proyectos ejecutados</span></div>
+            <div class="stat"><b>12</b><span>Años de experiencia</span></div>
+            <div class="stat"><b>100%</b><span>Compromiso de obra</span></div>
+          </div>
+        </div>
+        <div class="about-visual">
+          <div>
+            <div class="ph">👷‍♂️</div>
+            <small>Equipo de JMC en obra</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Servicios ===== -->
+  <section class="section section-alt" id="servicios">
     <div class="container">
       <div class="section-head">
-        <p class="section-eyebrow">Lo que hacemos</p>
-        <h2>Nuestros servicios</h2>
-        <p class="section-sub">Soluciones integrales de construcción y mantenimiento.</p>
+        <p class="section-eyebrow">Qué hacemos</p>
+        <h2>Soluciones integrales para cada etapa.</h2>
+        <p class="section-sub">Un servicio técnico y organizado, pensado para clientes que valoran claridad, control y calidad constructiva.</p>
       </div>
       <div class="services-grid">
         <article class="service-card">
-          <div class="service-img">🏗️</div>
-          <div class="service-body">
-            <h3>Diseño y Obra Civil</h3>
-            <p>Construcción de estructuras, parqueos, badenes, encache de cañadas e infraestructura urbana.</p>
-          </div>
+          <span class="service-num">01</span>
+          <h3>Diseño y planificación</h3>
+          <p>Conceptualización, planos, coordinación técnica y programación del proyecto.</p>
         </article>
         <article class="service-card">
-          <div class="service-img">🧱</div>
-          <div class="service-body">
-            <h3>Remodelaciones y Fachadas</h3>
-            <p>Readecuación de oficinas, salones y áreas de trabajo, con acabados de calidad.</p>
-          </div>
+          <span class="service-num">02</span>
+          <h3>Construcción</h3>
+          <p>Ejecución de obras residenciales, comerciales, corporativas e institucionales con supervisión continua.</p>
         </article>
         <article class="service-card">
-          <div class="service-img">🎨</div>
-          <div class="service-body">
-            <h3>Pintura e Impermeabilización</h3>
-            <p>Pintura interior y exterior, impermeabilización y protección de superficies.</p>
-          </div>
+          <span class="service-num">03</span>
+          <h3>Gerencia de proyectos</h3>
+          <p>Control de alcance, costos, cronograma, calidad y comunicación con el cliente.</p>
         </article>
         <article class="service-card">
-          <div class="service-img">🛠️</div>
-          <div class="service-body">
-            <h3>Mantenimiento e Instalaciones</h3>
-            <p>Mantenimiento preventivo y correctivo de edificaciones, equipos y aire acondicionado.</p>
-          </div>
+          <span class="service-num">04</span>
+          <h3>Remodelaciones</h3>
+          <p>Transformación de espacios existentes con soluciones funcionales y contemporáneas.</p>
+        </article>
+        <article class="service-card">
+          <span class="service-num">05</span>
+          <h3>Supervisión de obra</h3>
+          <p>Seguimiento técnico y documental para asegurar que cada partida cumpla lo planificado.</p>
+        </article>
+        <article class="service-card">
+          <span class="service-num">06</span>
+          <h3>Presupuesto y cubicaciones</h3>
+          <p>Estimaciones claras, análisis de costos y control económico durante la ejecución.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ===== (5) Proyectos ===== -->
-  <section class="section section-alt" id="proyectos">
+  <!-- ===== Proyectos ===== -->
+  <section class="section section-dark" id="proyectos">
     <div class="container">
       <div class="section-head">
-        <p class="section-eyebrow">Experiencia</p>
-        <h2>Proyectos</h2>
-        <p class="section-sub">Obras ejecutadas para clientes públicos y privados.</p>
+        <p class="section-eyebrow">Proyectos destacados</p>
+        <h2>De lo planeado a lo construido.</h2>
+        <p class="section-sub">Obras ejecutadas para clientes públicos y privados en la República Dominicana.</p>
       </div>
 
       <div class="project-cats">
@@ -556,7 +452,7 @@ a { color: inherit; text-decoration: none; }
           <div class="project-cat-body">
             <span class="tag">Sector Público</span>
             <h3>Obras para el Estado</h3>
-            <p>Ejecución de contratos con ayuntamientos, ministerios e instituciones a través de licitaciones públicas.</p>
+            <p>Contratos ejecutados con ayuntamientos, ministerios e instituciones a través de licitaciones públicas.</p>
           </div>
         </div>
         <div class="project-cat">
@@ -570,86 +466,54 @@ a { color: inherit; text-decoration: none; }
 
       <div class="projects">
         <article class="project">
-          <h4>Villa Don Oscar</h4>
-          <p class="project-loc">Jarabacoa, La Vega · Privado</p>
-          <p>Supervisión y terminación de obra: acabados de superficie y perfilería exterior.</p>
+          <div class="project-img">🏡</div>
+          <div class="project-body"><span class="tag">Privado</span><h4>Villa Don Oscar</h4><p>Supervisión y terminación de obra en Jarabacoa, La Vega.</p></div>
         </article>
         <article class="project">
-          <h4>Construcción de badenes</h4>
-          <p class="project-loc">Villa Altagracia · Público</p>
-          <p>Construcción de badenes en diferentes calles del sector La Plata 1.</p>
+          <div class="project-img">🛣️</div>
+          <div class="project-body"><span class="tag">Público</span><h4>Construcción de badenes</h4><p>Diferentes calles del sector La Plata 1, Villa Altagracia.</p></div>
         </article>
         <article class="project">
-          <h4>Encache de cañada</h4>
-          <p class="project-loc">Sector INVI-CEA · Público</p>
-          <p>Obras de encache y canalización para el manejo de aguas pluviales.</p>
+          <div class="project-img">🏛️</div>
+          <div class="project-body"><span class="tag">Público</span><h4>Comedor institucional ETED</h4><p>Obras civiles del comedor en el edificio principal.</p></div>
         </article>
         <article class="project">
-          <h4>Comedor institucional ETED</h4>
-          <p class="project-loc">Transmisión Eléctrica · Público</p>
-          <p>Obras civiles para la construcción del comedor del edificio principal.</p>
+          <div class="project-img">🏢</div>
+          <div class="project-body"><span class="tag">Público</span><h4>Adecuación de áreas INESDYC</h4><p>Salón de embajadores, almacén y área de cocina.</p></div>
         </article>
         <article class="project">
-          <h4>Adecuación de áreas INESDYC</h4>
-          <p class="project-loc">Formación Diplomática · Público</p>
-          <p>Adecuación de salón de embajadores, almacén y área de cocina.</p>
+          <div class="project-img">🎨</div>
+          <div class="project-body"><span class="tag">Público</span><h4>Pintura y mantenimiento ISFODOSU</h4><p>Pintura exterior e impermeabilización de edificaciones.</p></div>
         </article>
         <article class="project">
-          <h4>Pintura y mantenimiento ISFODOSU</h4>
-          <p class="project-loc">Instituto Salomé Ureña · Público</p>
-          <p>Mantenimiento de pintura exterior e impermeabilización de edificaciones.</p>
+          <div class="project-img">💧</div>
+          <div class="project-body"><span class="tag">Público</span><h4>Encache de cañada</h4><p>Canalización de aguas pluviales, sector INVI-CEA.</p></div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ===== Nosotros ===== -->
-  <section class="section" id="nosotros">
-    <div class="container grid-2">
-      <div>
-        <p class="section-eyebrow">Quiénes somos</p>
-        <h2>Constructora dominicana comprometida con la calidad</h2>
-        <p>
-          Somos una empresa de ingeniería y construcción con base en Santo Domingo,
-          Distrito Nacional. Ejecutamos proyectos de obra civil, adecuación de espacios,
-          pintura, impermeabilización y mantenimiento, cumpliendo con los estándares
-          técnicos y los plazos comprometidos.
-        </p>
-        <p>
-          Trabajamos habitualmente con instituciones del Estado a través de procesos de
-          licitación pública, así como con clientes privados, entregando obras eficientes,
-          transparentes y de calidad certificada.
-        </p>
-      </div>
-      <ul class="value-list">
-        <li><h3>Calidad certificada</h3><p>Ejecución eficiente respaldada por certificaciones de obra de nuestros clientes.</p></li>
-        <li><h3>Cumplimiento de plazos</h3><p>Planificación y control de obra para entregar en el tiempo acordado.</p></li>
-        <li><h3>Empresa formal</h3><p>Registrada y al día, habilitada para contratar con el Estado.</p></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ===== Acerca de (stats) ===== -->
-  <section class="section section-dark" id="acerca">
+  <!-- ===== Equipo ===== -->
+  <section class="section" id="equipo">
     <div class="container">
-      <div class="section-head">
-        <p class="section-eyebrow" style="color:var(--amber)">Acerca de</p>
-        <h2>En números</h2>
-        <p class="section-sub" style="color:rgba(255,255,255,0.75)">Nuestra experiencia respaldada por obras reales.</p>
+      <div class="section-head center">
+        <p class="section-eyebrow">Nuestro equipo</p>
+        <h2>Profesionales detrás de cada obra.</h2>
+        <p class="section-sub">Ingeniería, diseño y planificación con experiencia comprobada. <em>(Fotos y nombres del equipo por confirmar.)</em></p>
       </div>
-      <div class="stats-band">
-        <div class="stat"><b>+10</b><span>obras ejecutadas</span></div>
-        <div class="stat"><b>8+</b><span>instituciones atendidas</span></div>
-        <div class="stat"><b>2</b><span>sectores (público y privado)</span></div>
-        <div class="stat"><b>100%</b><span>compromiso con el plazo</span></div>
+      <div class="team-grid">
+        <article class="team-card"><div class="team-photo">👤</div><div class="team-body"><h4>Nombre Apellido</h4><span>Dirección</span></div></article>
+        <article class="team-card"><div class="team-photo">👤</div><div class="team-body"><h4>Nombre Apellido</h4><span>Ingeniería</span></div></article>
+        <article class="team-card"><div class="team-photo">👤</div><div class="team-body"><h4>Nombre Apellido</h4><span>Planificación</span></div></article>
+        <article class="team-card"><div class="team-photo">👤</div><div class="team-body"><h4>Nombre Apellido</h4><span>Supervisión</span></div></article>
       </div>
     </div>
   </section>
 
-  <!-- ===== (6) Clientes ===== -->
+  <!-- ===== Clientes ===== -->
   <section class="section section-alt" id="clientes">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head center">
         <p class="section-eyebrow">Confían en nosotros</p>
         <h2>Clientes</h2>
         <p class="section-sub">Instituciones y empresas para las que hemos trabajado.</p>
@@ -667,24 +531,24 @@ a { color: inherit; text-decoration: none; }
     </div>
   </section>
 
-  <!-- ===== CTA Cotizar ===== -->
+  <!-- ===== CTA ===== -->
   <section class="cta-band">
     <div class="container">
       <div>
         <h2>¿Tienes un proyecto en mente?</h2>
         <p>Solicita una cotización sin compromiso. Te respondemos a la brevedad.</p>
       </div>
-      <a href="#contacto" class="btn btn-dark">Cotizar ahora</a>
+      <a href="#contacto" class="btn btn-white">Cotizar proyecto</a>
     </div>
   </section>
 
-  <!-- ===== (7) Contacto ===== -->
+  <!-- ===== Contacto ===== -->
   <section class="section" id="contacto">
     <div class="container">
       <div class="section-head">
         <p class="section-eyebrow">Contáctanos</p>
-        <h2>Contacto</h2>
-        <p class="section-sub">Estamos listos para ayudarte con tu próximo proyecto.</p>
+        <h2>Hablemos de tu próximo proyecto.</h2>
+        <p class="section-sub">Estamos listos para ayudarte con diseño, construcción o gestión de obra.</p>
       </div>
 
       <div class="contact-grid">
@@ -698,7 +562,6 @@ a { color: inherit; text-decoration: none; }
               <li><span class="contact-label">RNC</span>101704977</li>
             </ul>
           </div>
-
           <div class="contact-block">
             <h3>Horario de atención</h3>
             <ul class="hours">
@@ -707,13 +570,12 @@ a { color: inherit; text-decoration: none; }
               <li><span>Domingo</span><span>Cerrado</span></li>
             </ul>
           </div>
-
           <div class="contact-block">
             <h3>Trabaja con nosotros</h3>
             <p style="margin:0;color:var(--muted);font-size:0.94rem">
-              ¿Quieres formar parte del equipo? Envía tu currículum a
+              Envía tu currículum a
               <a href="mailto:info@jmcconstruye.com" style="color:var(--navy);font-weight:600">info@jmcconstruye.com</a>
-              <em style="color:var(--amber-600);font-style:italic;font-size:0.82rem"> · correo por confirmar</em>
+              <em style="color:var(--orange);font-style:italic;font-size:0.8rem"> · correo por confirmar</em>
             </p>
           </div>
         </div>
@@ -733,21 +595,25 @@ a { color: inherit; text-decoration: none; }
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-col">
-          <div class="footer-brand">
-            <span class="brand-mark">JMC</span>
-            <div>
-              <strong>Constructora JMC</strong>
-              <small>Ingenieros y Asociados</small>
-            </div>
-          </div>
-          <p style="color:rgba(255,255,255,0.6);font-size:0.9rem">Ingeniería y construcción para el sector público y privado en la República Dominicana.</p>
+        <div class="footer-col on-dark">
+          <a class="brand" href="#top" aria-label="Inicio">
+            <svg class="brand-logo" viewBox="0 0 48 48" role="img" aria-label="JMC">
+              <rect x="1" y="1" width="46" height="46" rx="11" fill="#10273f"/>
+              <path d="M24 10 L38 20 V21 H10 V20 Z" fill="#ea6a2c"/>
+              <rect x="13" y="23" width="5" height="15" rx="1" fill="#ffffff"/>
+              <rect x="21.5" y="23" width="5" height="15" rx="1" fill="#ffffff"/>
+              <rect x="30" y="23" width="5" height="15" rx="1" fill="#ea6a2c"/>
+            </svg>
+            <span class="brand-text"><strong>JMC</strong><small>Constructora</small></span>
+          </a>
+          <p class="footer-brand-text">Ingenieros y Asociados · Diseño, construcción y gestión de obra para el sector público y privado en la República Dominicana.</p>
         </div>
         <div class="footer-col">
           <h4>Navegación</h4>
           <a href="#nosotros">Nosotros</a>
           <a href="#servicios">Servicios</a>
           <a href="#proyectos">Proyectos</a>
+          <a href="#equipo">Equipo</a>
           <a href="#contacto">Contacto</a>
         </div>
         <div class="footer-col">
@@ -758,12 +624,11 @@ a { color: inherit; text-decoration: none; }
           <p>RNC 101704977</p>
         </div>
       </div>
-      <p class="footer-copy">© <span id="year"></span> Constructora JMC Ingenieros y Asociados. Todos los derechos reservados.</p>
+      <p class="footer-copy">© <span id="year"></span> JMC Constructora — Ingenieros y Asociados. Todos los derechos reservados.</p>
     </div>
   </footer>
 
   <script>
-    // Menú móvil
     const toggle = document.getElementById("navToggle");
     const nav = document.getElementById("nav");
     if (toggle && nav) {
@@ -778,20 +643,6 @@ a { color: inherit; text-decoration: none; }
         });
       });
     }
-
-    // Dropdown Servicios (click en móvil)
-    const dropdown = document.getElementById("dropdown");
-    const dropBtn = document.getElementById("dropBtn");
-    if (dropdown && dropBtn) {
-      dropBtn.addEventListener("click", (e) => {
-        if (window.innerWidth <= 860) {
-          e.preventDefault();
-          dropdown.classList.toggle("open");
-        }
-      });
-    }
-
-    // Año en footer
     const yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
   </script>
