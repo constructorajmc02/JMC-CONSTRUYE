@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acceso | JMC Constructora</title>
+  <meta name="description" content="Portal de acceso interno JMC Constructora." />
+  <meta name="theme-color" content="#0a1a2e" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .auth-wrap {
+      min-height: calc(100vh - 108px);
+      display: grid;
+      place-items: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #0a1a2e 0%, #0e2338 60%, #112a45 100%);
+    }
+    .auth-card {
+      width: 100%;
+      max-width: 420px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.28);
+      padding: 42px 38px 38px;
+    }
+    .auth-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .auth-logo svg { width: 44px; height: 44px; }
+    .auth-logo-text strong { font-family: var(--font-head); font-size: 1.2rem; color: #0a1a2e; display: block; line-height: 1.1; }
+    .auth-logo-text small { font-size: .72rem; color: #6b7280; letter-spacing: .04em; text-transform: uppercase; }
+    .auth-title { font-family: var(--font-head); font-size: 1.45rem; font-weight: 700; color: #0a1a2e; margin-bottom: 4px; }
+    .auth-sub { font-size: .88rem; color: #6b7280; margin-bottom: 28px; }
+    .auth-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .auth-field label { font-size: .82rem; font-weight: 600; color: #374151; letter-spacing: .02em; }
+    .auth-field input {
+      padding: 11px 14px;
+      border: 1.5px solid #d1d5db;
+      border-radius: 9px;
+      font-size: .95rem;
+      font-family: var(--font-body);
+      color: #111827;
+      transition: border-color .15s, box-shadow .15s;
+      outline: none;
+    }
+    .auth-field input:focus { border-color: #e3a52f; box-shadow: 0 0 0 3px rgba(227,165,47,.15); }
+    .auth-field input.error { border-color: #ef4444; }
+    .auth-btn {
+      width: 100%;
+      padding: 12px;
+      background: #0a1a2e;
+      color: #fff;
+      border: none;
+      border-radius: 9px;
+      font-family: var(--font-head);
+      font-size: .95rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background .18s, transform .12s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .auth-btn:hover { background: #e3a52f; transform: translateY(-1px); }
+    .auth-btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+    .auth-btn .spinner {
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .auth-error {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-radius: 8px;
+      padding: 10px 13px;
+      font-size: .84rem;
+      color: #dc2626;
+      margin-bottom: 14px;
+      display: none;
+    }
+    .auth-error.show { display: block; }
+    .auth-divider { border: none; border-top: 1px solid #e5e7eb; margin: 24px 0 20px; }
+    .auth-back { font-size: .82rem; color: #6b7280; text-align: center; }
+    .auth-back a { color: #e3a52f; font-weight: 600; text-decoration: none; }
+    .auth-back a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Top bar ===== -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-contact">
+        <a href="https://wa.me/18090000000" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.29-.15-1.7-.84-1.96-.94-.26-.1-.45-.15-.64.15-.19.29-.74.94-.9 1.13-.17.19-.33.22-.62.07-.29-.15-1.22-.45-2.33-1.44-.86-.77-1.44-1.72-1.61-2-.17-.29-.02-.45.13-.6.13-.13.29-.33.44-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.55-.88-2.12-.23-.56-.47-.48-.64-.49l-.55-.01c-.19 0-.5.07-.76.36-.26.29-1 .98-.99 2.41 0 1.43 1.04 2.82 1.18 3.01.15.19 2.03 3.1 4.92 4.35.69.3 1.22.48 1.64.61.69.22 1.31.19 1.81.12.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34zM12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
+          (809) 000-0000
+        </a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@jmcconstruye.com" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16c.6 0 1 .4 1 1v12c0 .6-.4 1-1 1H4c-.6 0-1-.4-1-1V6c0-.6.4-1 1-1zm8 7L4.6 7h14.8L12 12zm0 2L4 8.6V18h16V8.6L12 14z"/></svg>
+          info@jmcconstruye.com
+        </a>
+      </div>
+      <div class="topbar-social" aria-label="Redes sociales">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.25"/></svg>
+        </a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.3l.4-2.9h-2.7V8.2c0-.8.3-1.4 1.5-1.4H16V4.2C15.6 4.1 14.8 4 13.9 4c-1.9 0-3.3 1.2-3.3 3.4v2.7H8v2.9h2.6V21h2.9z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Header / Nav ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Inicio">
+        <svg class="brand-logo" viewBox="0 0 48 48" role="img" aria-label="JMC Constructora">
+          <rect x="1" y="1" width="46" height="46" rx="11" fill="#0e2338"/>
+          <path d="M24 10 L38 20 V21 H10 V20 Z" fill="#e3a52f"/>
+          <rect x="13" y="23" width="5" height="15" rx="1" fill="#ffffff"/>
+          <rect x="21.5" y="23" width="5" height="15" rx="1" fill="#ffffff"/>
+          <rect x="30" y="23" width="5" height="15" rx="1" fill="#e3a52f"/>
+        </svg>
+        <span class="brand-text"><strong>JMC</strong><small>Constructora</small></span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="index.html">Inicio</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="proyectos.html">Proyectos</a>
+        <a href="equipo.html">Equipo</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="acceso.html" class="btn btn-primary active">Acceso</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== Login ===== -->
+  <main class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <svg viewBox="0 0 48 48">
+          <rect x="1" y="1" width="46" height="46" rx="11" fill="#0e2338"/>
+          <path d="M24 10 L38 20 V21 H10 V20 Z" fill="#e3a52f"/>
+          <rect x="13" y="23" width="5" height="15" rx="1" fill="#ffffff"/>
+          <rect x="21.5" y="23" width="5" height="15" rx="1" fill="#ffffff"/>
+          <rect x="30" y="23" width="5" height="15" rx="1" fill="#e3a52f"/>
+        </svg>
+        <div class="auth-logo-text">
+          <strong>JMC Constructora</strong>
+          <small>Portal Interno</small>
+        </div>
+      </div>
+
+      <h1 class="auth-title">Iniciar sesión</h1>
+      <p class="auth-sub">Acceso exclusivo para personal autorizado.</p>
+
+      <div class="auth-error" id="authError"></div>
+
+      <form id="loginForm" novalidate>
+        <div class="auth-field">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" placeholder="usuario@jmcconstruye.com" autocomplete="email" required />
+        </div>
+        <div class="auth-field">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password" required />
+        </div>
+        <button type="submit" class="auth-btn" id="loginBtn">
+          <span id="btnText">Entrar</span>
+        </button>
+      </form>
+
+      <hr class="auth-divider" />
+      <p class="auth-back">
+        ¿Problemas para acceder?
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@jmcconstruye.com" target="_blank">Contactar administrador</a>
+      </p>
+    </div>
+  </main>
+
+  <!-- ===== Footer mínimo ===== -->
+  <footer style="background:#0a1a2e; padding:18px 0; text-align:center;">
+    <p style="color:rgba(255,255,255,.35); font-size:.78rem; margin:0;">
+      © <span id="year"></span> JMC Constructora — Ingenieros y Asociados · Acceso restringido
+    </p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="main.js"></script>
+  <script>
+    const SUPABASE_URL  = 'https://tbwcuuiengwyukhnkwel.supabase.co';
+    const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRid2N1dWllbmd3eXVraG5rd2VsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYzMTMzNzYsImV4cCI6MjEwMTg4OTM3Nn0.pR6vmzZiWpZIs6G_OvRhSp1oCTU94SwIGW-Ja14lDiU';
+    const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+    const form    = document.getElementById('loginForm');
+    const errBox  = document.getElementById('authError');
+    const btn     = document.getElementById('loginBtn');
+    const btnText = document.getElementById('btnText');
+
+    function showError(msg) {
+      errBox.textContent = msg;
+      errBox.classList.add('show');
+    }
+    function clearError() { errBox.classList.remove('show'); }
+
+    function setLoading(on) {
+      btn.disabled = on;
+      btnText.textContent = on ? '' : 'Entrar';
+      if (on) {
+        const spin = document.createElement('span');
+        spin.className = 'spinner';
+        btn.appendChild(spin);
+      } else {
+        btn.querySelector('.spinner')?.remove();
+      }
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      clearError();
+
+      const email    = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (!email || !password) { showError('Ingresa tu correo y contraseña.'); return; }
+
+      setLoading(true);
+      const { data, error } = await sb.auth.signInWithPassword({ email, password });
+      setLoading(false);
+
+      if (error) {
+        showError('Credenciales incorrectas. Verifica tu correo y contraseña.');
+        document.getElementById('password').classList.add('error');
+        return;
+      }
+
+      window.location.href = 'index.html';
+    });
+
+    document.getElementById('password').addEventListener('input', () => {
+      document.getElementById('password').classList.remove('error');
+      clearError();
+    });
+  </script>
+</body>
+</html>
