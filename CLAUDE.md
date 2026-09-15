@@ -133,10 +133,17 @@ de caja). Existe, pero no le encontré API pública.
   enlaces/credenciales listos para usar. Escribe en español.
 
 ### Trampas conocidas
-- En Postgres toda función nace con `execute` para **PUBLIC**, y `anon` hereda.
-  `revoke ... from anon` **no sirve**: hay que `revoke execute ... from public`.
-  Sin eso, cualquiera sin sesión podía inyectar licitaciones falsas por
-  `/rest/v1/rpc/`.
+- **Cerrar una función nueva exige DOS revocaciones**, no una:
+  ```sql
+  revoke execute on function public.x(...) from public;              -- grant implícito
+  revoke execute on function public.x(...) from anon, authenticated; -- default privileges de Supabase
+  ```
+  Toda función nace con `execute` para `PUBLIC`, y además Supabase otorga
+  `execute` **explícitamente** a `anon` y `authenticated` por sus *default
+  privileges* en el esquema `public`. Con una sola revocación queda abierta y
+  el advisor lo detecta. Sin esto, cualquiera sin sesión puede invocarla por
+  `/rest/v1/rpc/` — e inyectar licitaciones falsas. **Correr
+  `get_advisors(type: security)` después de crear funciones.**
 - Un `exception when others` que marque el registro como procesado **pierde
   datos en silencio** (pasó con los pliegos de 10 de 824 obras).
 - Insertar usuarios a mano en `auth.users` exige las 8 columnas de token en
