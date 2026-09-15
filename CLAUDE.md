@@ -9,6 +9,40 @@ Clasificación MIPYME: **Micro Empresa**.
 
 ---
 
+## El objetivo
+
+Una **plataforma integral** que cubra el ciclo completo de una constructora
+dominicana: desde enterarse de que existe una licitación hasta cobrar la última
+factura de la obra. No un monitor de licitaciones ni un ERP de obra por
+separado — las dos cosas conectadas, porque el valor está justo en la costura:
+una licitación ganada se convierte en obra sin volver a teclear nada, y la
+cubicación aprobada se factura sola.
+
+**El ciclo completo, en orden:**
+
+1. **Detectar** — obras publicadas por la DGCP, filtradas a lo que le conviene a
+   JMC, con alerta el mismo día. Y el PACC para anticipar lo que aún no sale.
+2. **Decidir** — puntuación de conveniencia, precios de referencia de obras
+   parecidas, quién suele ganar en esa institución.
+3. **Preparar** — pliego descargado, lista de requisitos y **prellenado** de la
+   documentación desde el Expediente Maestro que ya existe.
+4. **Ofertar** — presupuesto por partidas, márgenes, garantías y fianzas.
+5. **Ejecutar** — obra con avance por cubicaciones, presupuestado vs ejecutado
+   en vivo, subcontratos, personal y maquinaria.
+6. **Abastecer** — inventario y almacén por obra: entradas, salidas, quién
+   retiró qué. Compras y órdenes a proveedores.
+7. **Cobrar** — facturación electrónica e-CF ante la DGII desde la cubicación
+   aprobada, caja chica por obra, y seguimiento de si el Estado pagó.
+
+**Licitaciones públicas y privadas van en módulos SEPARADOS** — el usuario lo
+pidió explícitamente. Las privadas llegan por invitación directa, sin portal ni
+pliego estándar.
+
+Restricción de diseño: **la parte de campo tiene que funcionar sin señal.** En
+la obra no siempre hay datos, y es la razón por la que estos sistemas fracasan.
+
+---
+
 ## ⚠️ Lo más urgente
 
 **Facturación electrónica e-CF: fecha límite 15 de noviembre de 2026.**
@@ -128,9 +162,23 @@ de caja). Existe, pero no le encontré API pública.
    usuario esté autenticado: cualquiera que entre ve estados financieros y
    cuentas bancarias. Arreglarlo puede romper su aplicación.
 
-## Competencia (analizada 2026-09-14)
+## Competencia (analizada 2026-09-14/15)
 
-Ninguno hace las dos cosas: **licitahoy.com** (US$45/mes) y **licitard.com**
-(US$0–74.99) vigilan licitaciones sin gestionar obra; **emporio.com.do** y
-**lp.malla.io/construccion** gestionan obra sin mirar licitaciones. JMC quiere
-ambas — ahí está el hueco.
+Todos son dominicanos. **Ninguno cubre el ciclo completo**, y ese es el hueco.
+
+| Sistema | Cubre | No cubre | Precio |
+|---|---|---|---|
+| **licitahoy.com** | Alertas DGCP, tablero, análisis competitivo, fianzas, app móvil. Su función fuerte: ***Prellenado***, completa ~80% de la documentación | Obra, inventario, facturación | US$45/mes |
+| **licitard.com** | Cruza 4 fuentes (DGCP, InfoPago, RPE, UNSPSC), puntuación de compatibilidad 0-1, detección de anomalías, ***Watchdog*** de competidores | Obra, inventario, facturación | US$0 / 39.99 / 74.99 |
+| **coraxis.tech** | **El más cercano a lo que queremos.** Licitaciones + ejecución: módulos *START*, *BID*, *SIGNAL* y *EXECUTION* (partidas, órdenes de compra, pagos, contenedores, flujo de caja). **OCR de pliegos y actas** con nivel de confianza. Asistente *Leo*. Arquitectura local-first. Alertas gratis por correo | Inventario/almacén, facturación e-CF, caja chica, nómina, maquinaria, subcontratistas | No publicado |
+| **emporio.com.do** | Constructoras **y ferreterías** → sí tiene inventario. **Emisor certificado e-CF**, cubicaciones que se facturan directo, rentabilidad por obra, **funciona sin conexión** | Licitaciones | No publicado |
+| **lp.malla.io/construccion** | ERP de obra: presupuestado vs ejecutado, alertas de desviación, materiales por obra, avance, documentos | Licitaciones, inventario formal | Tras diagnóstico |
+
+**Lecturas para el diseño:**
+- El *prellenado* de licitahoy necesita un repositorio de papeles al día — que
+  es exactamente el Expediente Maestro que ya está en la base. Las dos mitades
+  existen y están desconectadas. **Es la ventaja que JMC ya tiene pagada.**
+- Coraxis demuestra que licitación + ejecución es un producto viable, y deja
+  libre justo lo que JMC necesita: almacén, e-CF, caja chica y maquinaria.
+- El OCR de pliegos (Coraxis) y la puntuación de compatibilidad (LicitaRD) son
+  las dos piezas de inteligencia que más ahorran tiempo real.
