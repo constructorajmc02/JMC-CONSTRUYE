@@ -250,7 +250,9 @@
         return;
       }
 
-      window.location.href = 'index.html';
+      var next = new URLSearchParams(location.search).get('next');
+      // Solo rutas internas: nunca redirigir a un destino externo.
+      window.location.href = (next && /^[a-z0-9_-]+\.html$/i.test(next)) ? next : 'licitaciones.html';
     });
 
     document.getElementById('password').addEventListener('input', () => {

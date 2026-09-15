@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Licitaciones | JMC Constructora</title>
+  <meta name="description" content="Obras públicas abiertas, competencia y planes de compra." />
+  <meta name="theme-color" content="#0a1a2e" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .lic-hero {
+      background: linear-gradient(135deg, #0a1a2e 0%, #0e2338 60%, #112a45 100%);
+      padding: 34px 0 78px;
+      color: #fff;
+    }
+    .lic-hero-inner { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: flex-end; justify-content: space-between; }
+    .lic-hero h1 { font-family: var(--font-head); font-size: clamp(1.6rem, 4vw, 2.3rem); font-weight: 700; margin: 0; line-height: 1.1; }
+    .lic-hero .kicker { font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--amber); font-weight: 600; margin-bottom: 7px; }
+    .lic-user { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: .84rem; color: rgba(255,255,255,.7); }
+    .lic-btn {
+      font-family: var(--font-head); font-size: .82rem; font-weight: 600;
+      padding: 8px 15px; border-radius: 8px; cursor: pointer;
+      border: 1.5px solid rgba(255,255,255,.28); background: transparent; color: #fff;
+      transition: background .15s, border-color .15s;
+    }
+    .lic-btn:hover { background: rgba(255,255,255,.1); }
+    .lic-btn.primary { background: var(--amber); border-color: var(--amber); color: #0a1a2e; }
+    .lic-btn.primary:hover { background: var(--amber-600); border-color: var(--amber-600); }
+    .lic-btn:disabled { opacity: .5; cursor: default; }
+    .lic-btn:focus-visible, .lic-tab:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+
+    .lic-main { background: var(--bg); padding-bottom: 60px; min-height: 40vh; }
+    .lic-figs {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 14px; margin-top: -52px; margin-bottom: 30px;
+    }
+    .lic-fig {
+      background: #fff; border-radius: var(--radius-sm); padding: 16px 18px;
+      box-shadow: var(--shadow-sm); border: 1px solid var(--line);
+    }
+    .lic-fig dt { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+    .lic-fig dd {
+      margin: 6px 0 0; font-family: var(--font-head); font-weight: 700;
+      font-size: 1.62rem; color: var(--navy); font-variant-numeric: tabular-nums; line-height: 1.1;
+    }
+    .lic-fig dd small { display: block; font-family: var(--font-body); font-weight: 400; font-size: .76rem; color: var(--muted); margin-top: 3px; }
+
+    .lic-tabs { display: flex; gap: 4px; flex-wrap: wrap; border-bottom: 2px solid var(--line); margin-bottom: 22px; }
+    .lic-tab {
+      font-family: var(--font-head); font-size: .88rem; font-weight: 600;
+      background: none; border: none; color: var(--muted);
+      padding: 10px 16px; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px;
+    }
+    .lic-tab[aria-selected="true"] { color: var(--navy); border-bottom-color: var(--amber); }
+
+    .lic-panel h2 { font-family: var(--font-head); font-size: 1.12rem; color: var(--navy); margin: 0 0 4px; }
+    .lic-panel .lead { color: var(--muted); font-size: .88rem; margin: 0 0 18px; max-width: 68ch; }
+
+    .lic-scroll { overflow-x: auto; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); }
+    .lic-table { border-collapse: collapse; width: 100%; min-width: 680px; }
+    .lic-table th, .lic-table td { text-align: left; padding: 11px 16px; border-bottom: 1px solid var(--line); vertical-align: top; font-size: .86rem; }
+    .lic-table thead th {
+      font-size: .7rem; letter-spacing: .09em; text-transform: uppercase;
+      color: var(--muted); font-weight: 700; background: var(--bg-alt); white-space: nowrap;
+    }
+    .lic-table tbody tr:last-child td { border-bottom: none; }
+    .lic-table tbody tr:hover { background: var(--bg-alt); }
+    .lic-table td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .lic-table td.inst { font-weight: 600; color: var(--navy); white-space: nowrap; }
+    .lic-table td.obra { min-width: 300px; max-width: 480px; }
+    .lic-table td.obra a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+    .lic-table td.obra a:hover { color: var(--olive-deep); border-color: var(--olive); }
+    .lic-meta { display: block; color: var(--muted); font-size: .78rem; margin-top: 3px; }
+
+    .lic-chip {
+      display: inline-block; font-size: .68rem; font-weight: 700; letter-spacing: .05em;
+      text-transform: uppercase; padding: 3px 8px; border-radius: 999px; white-space: nowrap;
+    }
+    .lic-chip.urge   { background: #fee2e2; color: #b91c1c; }
+    .lic-chip.pronto { background: var(--amber-050); color: #9a6a0b; }
+    .lic-chip.ok     { background: #e8efe0; color: var(--olive-deep); }
+    .lic-chip.sigue  { background: #e3ecf5; color: #1d4d7a; }
+
+    .lic-estado { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 22px 24px; box-shadow: var(--shadow-sm); }
+    .lic-estado.malo  { border-left: 4px solid #dc2626; }
+    .lic-estado.aviso { border-left: 4px solid var(--amber); }
+    .lic-estado h3 { font-family: var(--font-head); font-size: .98rem; color: var(--navy); margin: 0 0 6px; }
+    .lic-estado p  { margin: 0; color: var(--muted); font-size: .88rem; max-width: 62ch; }
+    .lic-cargando { color: var(--muted); font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; padding: 26px 2px; }
+
+    @media (max-width: 640px) {
+      .lic-figs { margin-top: -40px; }
+      .lic-table th, .lic-table td { padding: 9px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Inicio">
+        <svg class="brand-logo" viewBox="0 0 48 48" role="img" aria-label="JMC Constructora">
+          <rect x="1" y="1" width="46" height="46" rx="11" fill="#0e2338"/>
+          <path d="M24 10 L38 20 V21 H10 V20 Z" fill="#e3a52f"/>
+          <rect x="13" y="23" width="5" height="15" rx="1" fill="#ffffff"/>
+          <rect x="21.5" y="23" width="5" height="15" rx="1" fill="#ffffff"/>
+          <rect x="30" y="23" width="5" height="15" rx="1" fill="#e3a52f"/>
+        </svg>
+        <span class="brand-text"><strong>JMC</strong><small>Constructora</small></span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="index.html">Inicio</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="proyectos.html">Proyectos</a>
+        <a href="equipo.html">Equipo</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="licitaciones.html" class="btn btn-primary active">Licitaciones</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="lic-hero">
+    <div class="container lic-hero-inner">
+      <div>
+        <div class="kicker">Portal interno</div>
+        <h1>Licitaciones públicas</h1>
+      </div>
+      <div class="lic-user">
+        <span id="quien">Verificando sesión…</span>
+        <button class="lic-btn primary" id="refrescar" disabled>Actualizar</button>
+        <button class="lic-btn" id="salir">Salir</button>
+      </div>
+    </div>
+  </section>
+
+  <main class="lic-main">
+    <div class="container">
+
+      <dl class="lic-figs">
+        <div class="lic-fig"><dt>Obras abiertas</dt><dd id="f-abiertas">—<small>Se puede ofertar</small></dd></div>
+        <div class="lic-fig"><dt>Cierran en 7 días</dt><dd id="f-urgentes">—<small>Requieren decisión</small></dd></div>
+        <div class="lic-fig"><dt>En seguimiento</dt><dd id="f-total">—<small>Obras en el tablero</small></dd></div>
+        <div class="lic-fig"><dt>Pliegos</dt><dd id="f-pliegos">—<small>Descargables</small></dd></div>
+        <div class="lic-fig"><dt>Contratistas</dt><dd id="f-competidores">—<small>Con obra adjudicada</small></dd></div>
+      </dl>
+
+      <div class="lic-tabs" role="tablist">
+        <button class="lic-tab" role="tab" id="tab-abiertas"    aria-selected="true"  aria-controls="p-abiertas">Obras abiertas</button>
+        <button class="lic-tab" role="tab" id="tab-competencia" aria-selected="false" aria-controls="p-competencia">Competencia</button>
+        <button class="lic-tab" role="tab" id="tab-pacc"        aria-selected="false" aria-controls="p-pacc">Qué van a licitar</button>
+      </div>
+
+      <section class="lic-panel" id="p-abiertas" role="tabpanel" aria-labelledby="tab-abiertas">
+        <h2>Obras en las que todavía se puede ofertar</h2>
+        <p class="lead">Publicadas por la DGCP, ordenadas por lo que falta para que cierre la recepción de ofertas. Las instituciones marcadas son donde JMC suele competir.</p>
+        <div id="c-abiertas"><div class="lic-cargando">Cargando…</div></div>
+      </section>
+
+      <section class="lic-panel" id="p-competencia" role="tabpanel" aria-labelledby="tab-competencia" hidden>
+        <h2>Quién gana las obras del Estado</h2>
+        <p class="lead">Contratistas con obra pública adjudicada, con lo que llevan ganado y en cuántas instituciones.</p>
+        <div id="c-competencia"><div class="lic-cargando">Cargando…</div></div>
+      </section>
+
+      <section class="lic-panel" id="p-pacc" role="tabpanel" aria-labelledby="tab-pacc" hidden>
+        <h2>Planes anuales de compra</h2>
+        <p class="lead">Lo que cada institución declaró que piensa contratar este año. Sirve para anticiparse a lo que todavía no se publica.</p>
+        <div id="c-pacc"><div class="lic-cargando">Cargando…</div></div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer style="background:#0a1a2e; padding:18px 0; text-align:center;">
+    <p style="color:rgba(255,255,255,.35); font-size:.78rem; margin:0;">
+      © <span id="year"></span> JMC Constructora — Ingenieros y Asociados · Datos oficiales de la DGCP
+    </p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="main.js"></script>
+  <script>
+  (function () {
+    'use strict';
+
+    var SUPABASE_URL  = 'https://tbwcuuiengwyukhnkwel.supabase.co';
+    var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRid2N1dWllbmd3eXVraG5rd2VsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYzMTMzNzYsImV4cCI6MjEwMTg4OTM3Nn0.pR6vmzZiWpZIs6G_OvRhSp1oCTU94SwIGW-Ja14lDiU';
+    var sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+    var pesos  = new Intl.NumberFormat('es-DO', { maximumFractionDigits: 0 });
+    var fechas = new Intl.DateTimeFormat('es-DO', { day: 'numeric', month: 'short' });
+    var cargado = { abiertas: false, competencia: false, pacc: false };
+
+    function esc(s) {
+      return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+        return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+      });
+    }
+    function rd(n)  { return n == null ? '—' : pesos.format(n); }
+    function dia(s) { if (!s) return '—'; var d = new Date(s); return isNaN(d) ? '—' : fechas.format(d); }
+    function $(id)  { return document.getElementById(id); }
+
+    function pintarError(destino, error, titulo) {
+      $(destino).innerHTML =
+        '<div class="lic-estado malo"><h3>' + esc(titulo || 'No se pudieron cargar los datos') +
+        '</h3><p>' + esc((error && error.message) || 'Error inesperado al consultar la base.') + '</p></div>';
+    }
+    function pintarVacio(destino, texto) {
+      $(destino).innerHTML = '<div class="lic-estado"><h3>Sin resultados</h3><p>' + esc(texto) + '</p></div>';
+    }
+    function tabla(cabeceras, cuerpo) {
+      return '<div class="lic-scroll"><table class="lic-table"><thead><tr>' +
+        cabeceras.map(function (h) {
+          return '<th' + (h.num ? ' style="text-align:right"' : '') + '>' + esc(h.t) + '</th>';
+        }).join('') + '</tr></thead><tbody>' + cuerpo + '</tbody></table></div>';
+    }
+
+    // ---------- resumen ----------
+    function cargarResumen() {
+      return Promise.all([
+        sb.from('v_oportunidades').select('id', { count: 'exact', head: true }).eq('abierta', true),
+        sb.from('v_oportunidades').select('id', { count: 'exact', head: true }).eq('abierta', true).lte('dias_para_cierre', 7),
+        sb.from('oportunidades').select('id',   { count: 'exact', head: true }),
+        sb.from('dgcp_documentos').select('id', { count: 'exact', head: true }),
+        sb.from('v_competencia').select('rpe',  { count: 'exact', head: true })
+      ]).then(function (r) {
+        var ids = ['f-abiertas','f-urgentes','f-total','f-pliegos','f-competidores'];
+        r.forEach(function (res, i) {
+          $(ids[i]).firstChild.nodeValue = res.error ? '—' : rd(res.count);
+        });
+        var fallo = r.find(function (x) { return x.error; });
+        if (fallo) throw fallo.error;
+      });
+    }
+
+    // ---------- obras abiertas ----------
+    function cargarAbiertas() {
+      return sb.from('v_oportunidades')
+        .select('institucion,institucion_seguida,titulo,modalidad,monto_estimado,fecha_fin_recepcion_ofertas,dias_para_cierre,documentos,url')
+        .eq('abierta', true)
+        .order('dias_para_cierre', { ascending: true })
+        .limit(120)
+        .then(function (res) {
+          if (res.error) throw res.error;
+          var filas = res.data || [];
+          if (!filas.length) { pintarVacio('c-abiertas', 'Ahora mismo no hay obras con la recepción de ofertas abierta.'); return; }
+          var cuerpo = filas.map(function (o) {
+            var d = o.dias_para_cierre;
+            var clase = d == null ? 'ok' : (d <= 2 ? 'urge' : (d <= 7 ? 'pronto' : 'ok'));
+            var etiqueta = d == null ? '—' : (d <= 0 ? 'Hoy' : d + (d === 1 ? ' día' : ' días'));
+            var titulo = o.url
+              ? '<a href="' + esc(o.url) + '" target="_blank" rel="noopener noreferrer">' + esc(o.titulo) + '</a>'
+              : esc(o.titulo);
+            return '<tr>' +
+              '<td class="inst">' + esc(o.institucion || '—') +
+                (o.institucion_seguida ? ' <span class="lic-chip sigue">Seguida</span>' : '') + '</td>' +
+              '<td class="obra">' + titulo +
+                '<span class="lic-meta">' + esc(o.modalidad || '') +
+                (o.documentos ? ' · ' + o.documentos + ' pliego' + (o.documentos === 1 ? '' : 's') : '') +
+                '</span></td>' +
+              '<td class="num">' + rd(o.monto_estimado) + '</td>' +
+              '<td class="num">' + dia(o.fecha_fin_recepcion_ofertas) + '</td>' +
+              '<td class="num"><span class="lic-chip ' + clase + '">' + esc(etiqueta) + '</span></td>' +
+            '</tr>';
+          }).join('');
+          $('c-abiertas').innerHTML = tabla(
+            [{t:'Institución'},{t:'Obra'},{t:'Monto RD$',num:1},{t:'Cierra',num:1},{t:'Falta',num:1}], cuerpo);
+        });
+    }
+
+    // ---------- competencia ----------
+    function cargarCompetencia() {
+      return sb.from('v_competencia')
+        .select('razon_social,contratos_ganados,valor_total,valor_promedio,instituciones,ultima_adjudicacion')
+        .order('valor_total', { ascending: false, nullsFirst: false })
+        .limit(80)
+        .then(function (res) {
+          if (res.error) throw res.error;
+          var filas = res.data || [];
+          if (!filas.length) { pintarVacio('c-competencia', 'Todavía no hay contratos adjudicados cargados.'); return; }
+          var cuerpo = filas.map(function (c) {
+            return '<tr>' +
+              '<td class="obra"><strong>' + esc(c.razon_social || '—') + '</strong></td>' +
+              '<td class="num">' + rd(c.contratos_ganados) + '</td>' +
+              '<td class="num">' + rd(c.valor_total) + '</td>' +
+              '<td class="num">' + rd(c.valor_promedio) + '</td>' +
+              '<td class="num">' + rd(c.instituciones) + '</td>' +
+              '<td class="num">' + dia(c.ultima_adjudicacion) + '</td>' +
+            '</tr>';
+          }).join('');
+          $('c-competencia').innerHTML = tabla(
+            [{t:'Contratista'},{t:'Obras',num:1},{t:'Total RD$',num:1},
+             {t:'Promedio RD$',num:1},{t:'Instituciones',num:1},{t:'Última',num:1}], cuerpo);
+        });
+    }
+
+    // ---------- planes de compra ----------
+    function cargarPacc() {
+      return sb.from('dgcp_pacc')
+        .select('unidad_compra,periodo,fecha_publicacion,url,codigo_unidad_compra')
+        .order('fecha_publicacion', { ascending: false })
+        .limit(120)
+        .then(function (res) {
+          if (res.error) throw res.error;
+          var filas = res.data || [];
+          if (!filas.length) { pintarVacio('c-pacc', 'No hay planes anuales de compra cargados.'); return; }
+          var cuerpo = filas.map(function (p) {
+            var enlace = p.url
+              ? '<a href="' + esc(p.url) + '" target="_blank" rel="noopener noreferrer">Ver plan</a>'
+              : '—';
+            return '<tr>' +
+              '<td class="obra">' + esc(p.unidad_compra || '—') + '</td>' +
+              '<td class="num">' + esc(p.periodo == null ? '—' : p.periodo) + '</td>' +
+              '<td class="num">' + dia(p.fecha_publicacion) + '</td>' +
+              '<td class="obra">' + enlace + '</td>' +
+            '</tr>';
+          }).join('');
+          $('c-pacc').innerHTML = tabla(
+            [{t:'Institución'},{t:'Año',num:1},{t:'Publicado',num:1},{t:'Plan'}], cuerpo);
+        });
+    }
+
+    // ---------- pestañas ----------
+    var paneles = [
+      { tab:'tab-abiertas',    panel:'p-abiertas',    clave:'abiertas',    destino:'c-abiertas',    fn:cargarAbiertas },
+      { tab:'tab-competencia', panel:'p-competencia', clave:'competencia', destino:'c-competencia', fn:cargarCompetencia },
+      { tab:'tab-pacc',        panel:'p-pacc',        clave:'pacc',        destino:'c-pacc',        fn:cargarPacc }
+    ];
+
+    function asegurar(p) {
+      if (cargado[p.clave]) return;
+      cargado[p.clave] = true;
+      p.fn().catch(function (e) { cargado[p.clave] = false; pintarError(p.destino, e); });
+    }
+
+    paneles.forEach(function (p) {
+      $(p.tab).addEventListener('click', function () {
+        paneles.forEach(function (q) {
+          var activo = q === p;
+          $(q.tab).setAttribute('aria-selected', activo ? 'true' : 'false');
+          $(q.panel).hidden = !activo;
+        });
+        asegurar(p);
+      });
+    });
+
+    $('refrescar').addEventListener('click', function () {
+      var b = $('refrescar');
+      b.disabled = true;
+      Object.keys(cargado).forEach(function (k) { cargado[k] = false; });
+      paneles.forEach(function (p) {
+        if (!$(p.panel).hidden) {
+          $(p.destino).innerHTML = '<div class="lic-cargando">Cargando…</div>';
+          asegurar(p);
+        }
+      });
+      cargarResumen().catch(function () {}).then(function () { b.disabled = false; });
+    });
+
+    $('salir').addEventListener('click', function () {
+      sb.auth.signOut().then(function () { window.location.href = 'acceso.html'; });
+    });
+
+    // ---------- arranque: sin sesión, al login ----------
+    sb.auth.getSession().then(function (res) {
+      var ses = res.data && res.data.session;
+      if (!ses) { window.location.replace('acceso.html?next=licitaciones.html'); return; }
+
+      $('quien').textContent = ses.user.email;
+      $('refrescar').disabled = false;
+
+      cargarResumen().catch(function (e) {
+        pintarError('c-abiertas', e, 'No se pudo leer la base');
+      });
+      asegurar(paneles[0]);
+    });
+  })();
+  </script>
+</body>
+</html>
