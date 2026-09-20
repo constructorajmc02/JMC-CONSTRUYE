@@ -80,25 +80,34 @@ Supabase `tbwcuuiengwyukhnkwel` — https://tbwcuuiengwyukhnkwel.supabase.co
 Plan Free (500 MB; va por ~70 MB). Esquema completo en `supabase/` — ver su
 README para reconstruirlo.
 
-**32 tablas, 5 vistas, todas con control de acceso por fila.**
+**42 tablas, 8 vistas, todas con control de acceso por fila y por rol.**
 
 | Módulo | Qué hay |
 |---|---|
-| Expediente Maestro | `companies`, `documents`, `rpe_records`… — del tercero |
-| DGCP | `dgcp_procesos`, `dgcp_documentos`, `dgcp_contratos`, `dgcp_pacc`, `dgcp_unidades_compra` |
-| Licitaciones | `oportunidades` (públicas), `licitaciones_privadas` (separadas) |
+| Expediente Maestro | `companies`, `documents`, `rpe_records`… — del tercero, ya con RLS por rol |
+| DGCP | `dgcp_procesos`, `dgcp_articulos`, `dgcp_documentos`, `dgcp_contratos`, `dgcp_pacc`, `dgcp_unidades_compra` |
+| Rubros | `jmc_rubros` (40 familias UNSPSC del RPE), `jmc_historial` (adjudicaciones propias) |
+| Licitaciones | `oportunidades` (públicas), `licitaciones_privadas` (separadas), `requisitos_oferta` |
+| Presupuesto | `presupuestos`, `presupuesto_partidas`, `apus`, `apu_insumos`, `insumos`, `insumo_precios_historicos` |
 | Obra | `proyectos`, `partidas`, `cubicaciones`, `subcontratos` |
 | Inventario | `articulos`, `almacenes`, `movimientos_inventario` |
 | Dinero | `cajas_chicas`, `movimientos_caja`, `facturas` |
 
 **Vistas que debe leer la aplicación** (no las tablas directamente):
 `v_oportunidades` (filtrar `abierta = true`), `v_competencia`, `v_obra_avance`,
-`v_stock`, `v_caja_saldo`.
+`v_stock`, `v_caja_saldo`, `v_presupuesto_totales`, `v_expediente_listo`,
+`v_formulario_oferente`. Y la función `checklist_por_licitacion(codigo)`, que
+compara la vigencia de cada papel contra la fecha de cierre de ESA licitación.
 
-### Datos cargados
-Todo 2026: 53.141 procesos, 824 obras, 13.868 pliegos, 689 contratos,
-3.141 PACC, 755 instituciones. Se actualiza solo: `pg_cron` cada 3 h
-(`dgcp-sincronizar`) y cada 6 h (`dgcp-complementos`).
+### Datos cargados (al 2026-09-20)
+54.464 procesos, 30.840 renglones UNSPSC, 14.400 pliegos, 7.704 oportunidades
+en seguimiento, 3.141 PACC, 758 instituciones, 689 contratos. Se actualiza
+solo: `pg_cron` cada 3 h (`dgcp-sincronizar`) y cada 6 h (`dgcp-complementos`).
+
+**Tablas todavía vacías** (el esquema existe, falta usarlo): `proyectos`,
+`cubicaciones`, `articulos`, `almacenes`, `movimientos_inventario`,
+`cajas_chicas`, `movimientos_caja`, `facturas`, `subcontratos`, `insumos`,
+`apus`, `licitaciones_privadas`.
 
 ---
 
@@ -109,11 +118,16 @@ El Swagger está embebido en `https://datosabiertos.dgcp.gob.do/assets/api-dgcp-
 (no hay `/docs` servido). 25 endpoints; usamos procesos, unidades_compra,
 procesos/documentos, contratos y pacc.
 
-- `objeto_proceso` = Obras | Bienes | Servicios → **JMC solo compite en Obras**
-  (de 1.000 procesos recientes, solo 17 lo son: por eso el filtro vale tanto).
+- **NO filtrar solo por `objeto_proceso = 'Obras'`.** Es el error que se cometió
+  al principio: JMC está registrada en 40 familias UNSPSC, y muchas de ellas la
+  DGCP las clasifica como *Servicios* o *Bienes* (mantenimiento de
+  edificaciones, ingeniería, suministro de materiales). Filtrando solo Obras se
+  perdían 43 licitaciones abiertas. **Lo correcto es cruzar por familia UNSPSC**
+  contra `jmc_rubros`, usando `/procesos/articulos?familia=`.
 - `estado_proceso` = `Proceso publicado` significa abierto para ofertar.
 - Los filtros de `/proveedores` (`rpe`, `numero_documento`) **devuelven 500** —
-  es un fallo de ellos.
+  es un fallo de ellos. Pero **`/contratos?rpe=` SÍ funciona**, y es como se
+  trae el historial propio de adjudicaciones.
 
 Sin explorar aún: `infopago.dgcp.gob.do` (si el Estado pagó — clave para flujo
 de caja). Existe, pero no le encontré API pública.
@@ -153,21 +167,41 @@ de caja). Existe, pero no le encontré API pública.
 
 ---
 
-## Qué falta
+## Qué falta (revisado 2026-09-20)
 
-1. **Las pantallas** — nada de esto se ve; hoy solo se consulta la base.
-   Depende del bloqueo de la plataforma Next.js.
-2. **Emisión e-CF** — contratar emisor certificado (fecha límite arriba).
-3. **Notificaciones** — obra nueva, cierre próximo, documento por vencer,
-   material bajo mínimo. Canal por decidir (correo / WhatsApp).
-4. **Prellenado de documentos** — conectar el Expediente Maestro con los pliegos
-   ya descargados. Es la función estrella de la competencia y las dos mitades ya
-   están en la base.
-5. **Puntuación de compatibilidad** — ordenar las obras abiertas por cuánto
-   convienen, no solo listarlas.
-6. **RLS por rol en las 12 tablas del tercero** — hoy solo comprueban que el
-   usuario esté autenticado: cualquiera que entre ve estados financieros y
-   cuentas bancarias. Arreglarlo puede romper su aplicación.
+**Bloqueadores, no dependen de escribir código**
+1. **Las pantallas.** Solo existe `licitaciones.html` en este repositorio,
+   publicada en `jmc-construye.vercel.app`. La plataforma del dominio sigue
+   diciendo "Próximamente" y su código no aparece. Sin él, o se le pide a quien
+   la hizo, o todo se construye aquí.
+2. **El dominio.** `jmcconstruye.com` sirve entero la plataforma Next.js;
+   nada de este repositorio se ve ahí. Pendiente añadir
+   `portal.jmcconstruye.com` al proyecto `jmc-construye` en Vercel.
+3. **Emisión e-CF.** Contratar un emisor certificado. Fecha límite arriba.
+4. **Tres papeles que faltan en el expediente:** Certificación DGII de estar al
+   día, Certificación TSS y estados financieros auditados. Son casi siempre
+   obligatorios: sin ellos descalifican la oferta.
+
+**Se puede construir ya, sin esperar a nadie**
+5. **Puntuación de conveniencia.** Hoy `potencial` es una marca manual. Falta
+   calcularla: monto en el rango de JMC, institución seguida, coincidencia de
+   rubro, competencia histórica en esa institución y días para preparar.
+6. **Notificaciones.** Nada envía todavía. Obra nueva, cierre próximo,
+   documento por vencer, material bajo mínimo. Canal por decidir.
+7. **Personal y maquinaria.** No hay tablas. Bloquean tres requisitos de oferta
+   (plantilla, currículos, equipos).
+8. **Compras y órdenes a proveedores.** No existe; es el hueco entre
+   presupuesto e inventario.
+9. **Generar los documentos**, no solo saber si están: llenar el Formulario de
+   Oferente y la Experiencia del Contratista en PDF.
+10. **InfoPago** — si el Estado pagó. Sin API pública encontrada todavía.
+11. **Usar lo que ya está modelado:** proyectos, cubicaciones, inventario, caja
+    y facturas tienen esquema y cero filas.
+
+**Hecho desde la última revisión** (16–17 sep): RLS por rol en el Expediente
+Maestro · escritura de licitaciones privadas · 40 rubros del RPE · checklist
+por licitación contra su fecha de cierre · presupuestos, APUs y banco de
+precios · alta de usuarios · marca de potencial.
 
 ## Competencia (analizada 2026-09-14/15)
 
