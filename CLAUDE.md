@@ -125,6 +125,11 @@ procesos/documentos, contratos y pacc.
   perdían 43 licitaciones abiertas. **Lo correcto es cruzar por familia UNSPSC**
   contra `jmc_rubros`, usando `/procesos/articulos?familia=`.
 - `estado_proceso` = `Proceso publicado` significa abierto para ofertar.
+- ⚠️ **Las fechas vienen en hora dominicana (UTC-04:00) pero etiquetadas con
+  `Z`.** Tomarlas como UTC las deja 4 horas adelantadas. Usar siempre
+  `dgcp_ts_rd()`, nunca `dgcp_ts()`, para cualquier fecha de la API. Verificado
+  contra el portal: proceso AMQ-DAF-CM-2026-0001 cierra "21/09/2026 09:00
+  (UTC-04:00)" y la API manda `2026-09-21T09:00:00Z`. Corregido en 0007.
 - Los filtros de `/proveedores` (`rpe`, `numero_documento`) **devuelven 500** —
   es un fallo de ellos. Pero **`/contratos?rpe=` SÍ funciona**, y es como se
   trae el historial propio de adjudicaciones.

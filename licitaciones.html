@@ -69,6 +69,8 @@
     .lic-table tbody tr:last-child td { border-bottom: none; }
     .lic-table tbody tr:hover { background: var(--bg-alt); }
     .lic-table td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .lic-table td.cierre { font-weight: 600; color: var(--navy); }
+    .lic-table td.cierre .lic-meta { font-weight: 400; text-align: right; }
     .lic-table td.inst { font-weight: 600; color: var(--navy); white-space: nowrap; }
     .lic-table td.obra { min-width: 300px; max-width: 480px; }
     .lic-table td.obra a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
@@ -144,9 +146,9 @@
     <div class="container">
 
       <dl class="lic-figs">
-        <div class="lic-fig"><dt>Obras abiertas</dt><dd id="f-abiertas">—<small>Se puede ofertar</small></dd></div>
-        <div class="lic-fig"><dt>Cierran en 7 días</dt><dd id="f-urgentes">—<small>Requieren decisión</small></dd></div>
-        <div class="lic-fig"><dt>En seguimiento</dt><dd id="f-total">—<small>Obras en el tablero</small></dd></div>
+        <div class="lic-fig"><dt>Abiertas</dt><dd id="f-abiertas">—<small>Se puede ofertar</small></dd></div>
+        <div class="lic-fig"><dt>Cierran en 48 h</dt><dd id="f-urgentes">—<small>Decidir ya</small></dd></div>
+        <div class="lic-fig"><dt>En seguimiento</dt><dd id="f-total">—<small>En el tablero</small></dd></div>
         <div class="lic-fig"><dt>Pliegos</dt><dd id="f-pliegos">—<small>Descargables</small></dd></div>
         <div class="lic-fig"><dt>Contratistas</dt><dd id="f-competidores">—<small>Con obra adjudicada</small></dd></div>
       </dl>
@@ -207,6 +209,24 @@
     function dia(s) { if (!s) return '—'; var d = new Date(s); return isNaN(d) ? '—' : fechas.format(d); }
     function $(id)  { return document.getElementById(id); }
 
+    // El tiempo que falta se dice en horas cuando queda menos de dos dias:
+    // "Hoy" no sirve si la licitacion cierra a las 09:00 y ya son las 14:00.
+    function restante(horas) {
+      if (horas == null) return '—';
+      var h = Number(horas);
+      if (h <= 0) return 'Cerrada';
+      if (h < 1)  return Math.round(h * 60) + ' min';
+      if (h < 48) return (h < 10 ? h.toFixed(1).replace('.', ',') : Math.round(h)) + ' h';
+      var d = Math.floor(h / 24);
+      return d + (d === 1 ? ' día' : ' días');
+    }
+
+    function claseUrgencia(u) {
+      if (u === 'cerrada' || u === 'critica') return 'urge';
+      if (u === 'urgente') return 'pronto';
+      return 'ok';
+    }
+
     function pintarError(destino, error, titulo) {
       $(destino).innerHTML =
         '<div class="lic-estado malo"><h3>' + esc(titulo || 'No se pudieron cargar los datos') +
@@ -226,7 +246,7 @@
     function cargarResumen() {
       return Promise.all([
         sb.from('v_oportunidades').select('id', { count: 'exact', head: true }).eq('abierta', true),
-        sb.from('v_oportunidades').select('id', { count: 'exact', head: true }).eq('abierta', true).lte('dias_para_cierre', 7),
+        sb.from('v_oportunidades').select('id', { count: 'exact', head: true }).eq('abierta', true).in('urgencia', ['critica','urgente']),
         sb.from('oportunidades').select('id',   { count: 'exact', head: true }),
         sb.from('dgcp_documentos').select('id', { count: 'exact', head: true }),
         sb.from('v_competencia').select('rpe',  { count: 'exact', head: true })
@@ -243,18 +263,15 @@
     // ---------- obras abiertas ----------
     function cargarAbiertas() {
       return sb.from('v_oportunidades')
-        .select('institucion,institucion_seguida,titulo,modalidad,monto_estimado,fecha_fin_recepcion_ofertas,dias_para_cierre,documentos,url')
+        .select('institucion,institucion_seguida,titulo,modalidad,monto_estimado,cierre_texto,horas_para_cierre,urgencia,documentos,url')
         .eq('abierta', true)
-        .order('dias_para_cierre', { ascending: true })
+        .order('fecha_fin_recepcion_ofertas', { ascending: true })
         .limit(120)
         .then(function (res) {
           if (res.error) throw res.error;
           var filas = res.data || [];
-          if (!filas.length) { pintarVacio('c-abiertas', 'Ahora mismo no hay obras con la recepción de ofertas abierta.'); return; }
+          if (!filas.length) { pintarVacio('c-abiertas', 'Ahora mismo no hay licitaciones con la recepción de ofertas abierta.'); return; }
           var cuerpo = filas.map(function (o) {
-            var d = o.dias_para_cierre;
-            var clase = d == null ? 'ok' : (d <= 2 ? 'urge' : (d <= 7 ? 'pronto' : 'ok'));
-            var etiqueta = d == null ? '—' : (d <= 0 ? 'Hoy' : d + (d === 1 ? ' día' : ' días'));
             var titulo = o.url
               ? '<a href="' + esc(o.url) + '" target="_blank" rel="noopener noreferrer">' + esc(o.titulo) + '</a>'
               : esc(o.titulo);
@@ -266,12 +283,15 @@
                 (o.documentos ? ' · ' + o.documentos + ' pliego' + (o.documentos === 1 ? '' : 's') : '') +
                 '</span></td>' +
               '<td class="num">' + rd(o.monto_estimado) + '</td>' +
-              '<td class="num">' + dia(o.fecha_fin_recepcion_ofertas) + '</td>' +
-              '<td class="num"><span class="lic-chip ' + clase + '">' + esc(etiqueta) + '</span></td>' +
+              '<td class="num cierre">' + esc(o.cierre_texto || '—') +
+                '<span class="lic-meta">hora de RD</span></td>' +
+              '<td class="num"><span class="lic-chip ' + claseUrgencia(o.urgencia) + '">' +
+                esc(restante(o.horas_para_cierre)) + '</span></td>' +
             '</tr>';
           }).join('');
           $('c-abiertas').innerHTML = tabla(
-            [{t:'Institución'},{t:'Obra'},{t:'Monto RD$',num:1},{t:'Cierra',num:1},{t:'Falta',num:1}], cuerpo);
+            [{t:'Institución'},{t:'Licitación'},{t:'Monto RD$',num:1},
+             {t:'Cierra',num:1},{t:'Falta',num:1}], cuerpo);
         });
     }
 
