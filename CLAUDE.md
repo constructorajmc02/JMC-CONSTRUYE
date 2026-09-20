@@ -93,6 +93,12 @@ README para reconstruirlo.
 | Inventario | `articulos`, `almacenes`, `movimientos_inventario` |
 | Dinero | `cajas_chicas`, `movimientos_caja`, `facturas` |
 
+> **Para mostrar cuándo cierra una licitación, imprimir `cierre_etiqueta` tal
+> cual.** Ya viene en hora dominicana y distingue hoy de mañana
+> ("Cierra mañana 3:00 pm"). **Nunca calcularlo desde `dias_para_cierre`:**
+> ese campo vale 0 cuando falta *menos de un día*, no cuando cierra hoy — y
+> pintarlo como "Cierra hoy" es mentira en los dos sentidos.
+
 **Vistas que debe leer la aplicación** (no las tablas directamente):
 `v_oportunidades` (filtrar `abierta = true`), `v_competencia`, `v_obra_avance`,
 `v_stock`, `v_caja_saldo`, `v_presupuesto_totales`, `v_expediente_listo`,
