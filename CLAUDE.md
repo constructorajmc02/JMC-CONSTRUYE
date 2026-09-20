@@ -164,6 +164,12 @@ de caja). Existe, pero no le encontré API pública.
   `''`, no NULL, o GoTrue devuelve 500.
 - Cambiar el tipo de retorno de una función exige `drop function` antes.
 - No se puede renombrar una columna de vista con `create or replace view`.
+- **`create or replace view` NO conserva `with (security_invoker = true)`.** Hay
+  que repetirlo, o la vista pasa a ejecutarse con los privilegios de quien la
+  creó y se salta el RLS. Ya pasó una vez con `v_oportunidades`.
+- `drop table ... cascade` se lleva las vistas que referencian esa tabla, sin
+  avisar de cuáles. Ya pasó con `v_expediente_listo`. Listar las vistas antes y
+  después.
 
 ---
 
